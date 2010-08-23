@@ -1,0 +1,36 @@
+<% render :partial => 'actions' %>
+
+<% content_for :records do %>
+	<li id="client_<%= @gallery.id %>" class='clearfix record on'>
+		<span class='title'>
+			<%= @gallery.title %> <span class="preview">&nbsp;</span>
+		</span>
+
+		<span class='actions'>
+			<%= link_to_edit 	  @gallery %>
+			<%= link_to_delete  @gallery %>
+		</span>
+	</li>
+<% end %>
+
+<ul id="image_grid" class="clearfix">
+	<li id="image_17" class='image_0'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+	<li id="image_17" class='image_1'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+	<li id="image_17" class='image_2'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+	</br>
+	<li id="image_17" class='image_3'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+	<li id="image_17" class='image_4'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+	<li id="image_17" class='image_5'>
+		<img alt="About Us Image" height="135" src="" width="135" />
+	</li>
+</ul>

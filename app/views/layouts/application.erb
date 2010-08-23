@@ -5,13 +5,6 @@
     <%= render :partial => '/shared/site_bar'  %>
     <div id='tooltip_container'></div>
 		<%= render :partial => '/shared/menu' %>
-    <div id="page_container">
-      <div id="page">
-        <div id="content" class="clearfix">
-					<%= render :partial => "/shared/message" %>
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+		<%= render :partial => "/shared/body" %>
   </body>
 </html>

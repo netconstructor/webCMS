@@ -1,4 +1,6 @@
 WebCMS::Application.routes.draw do
+  resources :galleries
+
   resources :domains
 
   resources :clients

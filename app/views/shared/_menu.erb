@@ -2,13 +2,11 @@
 	<div id='header'>
 		<div id='header_content'>
 			<nav id="menu">
-				<%= link_to :Clients, clients_path, :class => 'active' %>
-				<%= link_to :Pages, 	clients_path %>
-				<%= link_to :Images, 	clients_path %>
-				<a href="" id="menu_reorder" title="Reorder menu"><img alt="Arrow_switch" height="16" src="/images/refinery/icons/arrow_switch.png?1269486134" width="16" /></a>
-				<a href="" id="menu_reorder_done" style="display: none;" title="I'm done reordering the menu"><img alt="Tick" height="16" src="/images/refinery/icons/tick.png?1269486134" width="16" /></a>
+				<% $menus.each do |item| -%>
+					<%= link_to item, "/#{item}", :class => 'active' if item==params[:controller] %>
+					<%= link_to item, "/#{item}" if item!=params[:controller] %>
+				<% end %>
 			</nav>
-			<input type='hidden' id='admin_authenticity_token' value='aimW58glysmChY4i+pYuCvQfzKQ8yaBZxv14R6uV/fw=' />
 		</div>
 	</div>
 </header>

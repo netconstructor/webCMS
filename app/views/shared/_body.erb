@@ -1,0 +1,23 @@
+<div id="page_container">
+	<div id="page">
+		<div id="content" class="clearfix">
+			<%= render :partial => "/shared/message" %>
+			<% if content_for?(:actions) %>
+				<div id='actions'>
+  				<ul>
+					<%= yield :actions %>
+					</ul>
+				</div>
+			<% end %>
+			<% if content_for?(:records)%>
+				<div id='records'>
+					<ul>
+						<%= yield :records %>
+					</ul>
+				</div>
+			<% end %>
+			<%= yield %>
+		</div>
+	</div>
+</div>
+

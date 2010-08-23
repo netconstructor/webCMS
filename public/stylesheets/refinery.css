@@ -1082,6 +1082,10 @@ a img {
   background-image: url('/images/refinery/icons/cross.png');
   padding: 0px 8px;
 }
+.img_icon {
+  background-image: url('/images/refinery/icons/img.png');
+}
+
 /* page parts */
 
 ul#page_parts {
@@ -1189,7 +1193,7 @@ textarea.wymeditor {
   padding: 12px;
 }
 ul#image_grid {
-  width: 100%;
+  width: 650px;
   padding: 0px;
   margin: 10px 0px 15px 0px;
 }

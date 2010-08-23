@@ -1,0 +1,17 @@
+<% content_for :actions do %>
+	<% if params[:id] != nil %>
+	<li>
+		<%= link_to 'New Image', new_gallery_path, :class => 'add_icon' %>
+	</li>
+	<br/>
+	<% end %>
+	<% @galleries.each do |gallery| %>
+		<li>
+			<%= link_to gallery.title, gallery, :class => 'img_icon' %>
+		</li>
+	<% end %>
+	<br/>
+	<li>
+		<%= link_to 'New Gallery', new_gallery_path, :class => 'add_icon' %>
+	</li>
+<% end %>
