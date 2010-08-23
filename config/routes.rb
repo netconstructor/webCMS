@@ -1,4 +1,4 @@
-Rails3::Application.routes.draw do
+WebCMS::Application.routes.draw do
   resources :domains
 
   resources :clients
