@@ -1,0 +1,32 @@
+<div id='actions'>
+  <ul>
+    <li>
+			<%= link_to 'New Client', new_client_path, :class => 'add_icon' %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+	<ul>
+		<% @clients.each do |client| %>
+			<li id="client_<%= client.id %>" class='clearfix record on'>
+				<span class='title'>
+					<%= client.name %> <span class="preview">&nbsp;</span>
+				</span>
+
+				<span class='actions'>
+					<%= link_to_edit 	 client %>
+					<%= link_to_delete client %>
+				</span>
+  		</li>
+		<% end %>
+	</ul>
+</div>
+
+
+
+
+
+
+
+
+

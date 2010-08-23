@@ -1,0 +1,14 @@
+<div class='form-actions'>
+	<div class='form-actions-left'>
+		<% buttons.each do |button| %>
+			<% if button == 'update'%>
+				<%= f.submit :id => 'submit_button', :class => 'wymupdate button', :name => 'done' %>
+			<% elsif button == 'updateEdit' %>
+				<%= f.submit :id => 'submit_continue_button', :class => 'wymupdate button', :name => 'continue', :value => "Save &amp; continue editing".html_safe %>
+			<% elsif button == 'cancel' %>
+				<%= link_to :cancel, self.send("#{controller}_path"), :id => 'cancel_button', :class => 'close_dialog button', :title => "Cancelling will lose all changes you've made to this page" %>
+			<% end %>
+		<% end %>		
+	</div>
+	<div class='form-actions-right'></div>
+</div>

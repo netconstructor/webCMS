@@ -1,0 +1,7 @@
+<%= form_for  @client, :html => {:multipart => true} do |f| %>
+	<%= item f, :text_field, 	:name 		%>
+	<%= item f, :text_field, 	:domain 	%>
+	<%= item f, :check_box,		:active 	%>
+	<%= item f, :file_field,	:zip 			%>
+	<%= buttons f, :clients, ['update', 'updateEdit', 'cancel'] %>
+<% end %>
