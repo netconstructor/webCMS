@@ -33,4 +33,5 @@
     <%= "<!--[if IE 8]>#{stylesheet_link_tag 'ie-less-than-9'}<![endif]-->".html_safe  %>
   <% end %>
 	<%= csrf_meta_tag %>
+	<%= yield :javascript %>
 </head>

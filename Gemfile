@@ -10,6 +10,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #use rubyzip for extracting zip files
 gem 'rubyzip'
 gem 'paperclip'
+gem "acts_as_list"
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1118,14 +1118,15 @@ textarea.wymeditor {
 ul#image_grid {
   width: 650px;
   padding: 0px;
+	margin-left: 2px;
 }
 ul#image_grid li {
   position: relative;
   float: left;
   margin: 0px 7px 12px 0px;
   padding: 0px;
-  width: 135px;
-  height: 135px;
+  width: 155px;
+  height: 145px;
   overflow: hidden;
 }
 

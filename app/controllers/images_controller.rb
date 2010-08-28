@@ -1,12 +1,4 @@
 class ImagesController < ApplicationController
-  def show    
-    @image = Image.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @image }
-    end
-  end
   def new     
     if Gallery.exists?(params[:gallery_id])
       @gallery = Gallery.find(params[:gallery_id])
@@ -19,10 +11,6 @@ class ImagesController < ApplicationController
     else
       redirect_to galleries_url, :notice => 'That gallery does not exist.'
     end
-  end
-  def edit    
-    @image = Image.find(params[:id])
-    render 'form'
   end
   def create  
     status = 500
@@ -38,26 +26,40 @@ class ImagesController < ApplicationController
     end
     render :nothing => true, :status => status 
   end
-  def update  
-    @image = Image.find(params[:id])
-
-    respond_to do |format|
-      if @image.update_attributes(params[:image])
-        format.html { redirect_to(@image, :notice => 'Image was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
+  def destroy 
+    id = params[:id].split('_').last
+    if Image.exists?(id)
+      @image = Image.find(id)
+      if @image.gallery.client_id == session[:client_id]
+        @image.destroy
       end
     end
+    render :nothing => true
   end
-  def destroy 
-    @image = Image.find(params[:id])
-    @image.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(images_url) }
-      format.xml  { head :ok }
+  def sort    
+    if Gallery.exists?(params[:gallery_id])
+      gallery = Gallery.find(params[:gallery_id])
+      if gallery.client_id == session[:client_id]
+        gallery.images.all.each do |image|
+          image.position = params[:image].index(image.id.to_s) + 1
+          image.save
+        end
+      end
     end
+    render :nothing => true
+  end
+  def drop    
+    puts gallery_id = params[:gallery_id].split('_').last
+    puts image_id = params[:image_id].split('_').last
+    if Gallery.exists?(gallery_id) && Image.exists?(image_id)
+      gallery = Gallery.find(gallery_id )
+      if gallery.client_id == session[:client_id]
+        image = Image.find(image_id)
+        image.gallery_id = gallery_id
+        image.position = 0
+        image.save
+      end
+    end
+    render :nothing => true
   end
 end

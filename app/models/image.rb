@@ -1,7 +1,10 @@
 class Image < ActiveRecord::Base
   belongs_to :gallery
+  acts_as_list :scope => :gallery_id, :order => :position
+  default_scope :order => :position
+
   has_attached_file :data, 
-                    :styles => {:small => ['135x135#', :jpg], :tsquare => ['100x100#', :jpg], :large => ['800x600>', :jpg]},
+                    :styles => {:small => ['155x145#', :jpg], :tsquare => ['100x100#', :jpg], :large => ['800x600>', :jpg]},
                     :default_style => :small,
                     :default_url => '/images/blank.gif',
                     :convert_options => {:thumb => '-strip -background white -flatten', :large => '-strip -background white -flatten'},

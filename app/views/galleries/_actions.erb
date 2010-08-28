@@ -1,15 +1,15 @@
 <% content_for :actions do %>
 	<% if params[:id] != nil %>
-	<li>
-		<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
-	</li>
-	<li>
-		<%= link_to 'Delete Image', new_image_path(:gallery_id => params[:id]), :class => 'delete_icon' %>
-	</li>
-	<br/>
+		<li>
+			<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
+		</li>
+		<li id='destroy_image'>
+			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon' %>
+		</li>
+		<br/>
 	<% end %>
 	<% @galleries.each do |gallery| %>
-		<li>
+		<li id='gallery_<%= gallery.id %>' class='<%= 'gallery' if @gallery != nil && gallery.id != @gallery.id %>'>
 			<%= link_to gallery.title, gallery, :class => 'img_icon' %>
 		</li>
 	<% end %>
@@ -17,4 +17,72 @@
 	<li>
 		<%= link_to 'New Gallery', new_gallery_path, :class => 'add_icon' %>
 	</li>
+<% end %>
+<% if @gallery != nil %>
+<% content_for :javascript do %>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("li#destroy_image").droppable({ 
+				hoverClass: '.hover',
+				over: function(event, ui) {
+					ui.draggable.animate({
+    				width: '30',
+    				height: '30'
+  				}, 100, function() {});
+				},
+				tolerance: 'pointer',
+				out: function(event, ui) {
+					ui.draggable.animate({
+    				width: '155',
+    				height: '145'
+  				}, 100, function() {});
+				},
+				drop: function(event, ui) {
+					ui.draggable.hide();
+					$.ajax({
+            type: 'post',
+            dataType: 'script',
+            url: '/images/'+ui.draggable.attr('id')+'?_method=DELETE'
+					});
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("li.gallery").droppable({ 
+				hoverClass: '.hover',
+				over: function(event, ui) {
+					ui.draggable.animate({
+    				width: '30',
+    				height: '30'
+  				}, 100, function() {});
+				},
+				tolerance: 'pointer',
+				out: function(event, ui) {
+					ui.draggable.animate({
+    				width: '155',
+    				height: '145'
+						
+  				}, 100, function() {});
+				},
+				drop: function(event, ui) {
+					var gallery_id = 'gallery_<%= @gallery.id %>'
+					if(gallery_id !== $(this).attr('id')){
+						ui.draggable.hide();
+						$.ajax({
+            	type: 'post',
+            	data: 'gallery_id='+$(this).attr('id')+'&image_id='+ui.draggable.attr('id'),
+            	dataType: 'script',
+            	url: '<%= drop_image_path %>'
+						})
+						
+					}
+					//alert('this:'+$(this).attr('id'));
+					//alert('this:'+ui.draggable.attr('id'));
+				}
+			});
+		});
+	</script>
+<% end %>
 <% end %>

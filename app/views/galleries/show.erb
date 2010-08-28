@@ -13,14 +13,35 @@
 </li>
 <% end %>
 
-
 <ul id="image_grid" class="clearfix">
 	<% @gallery.images.all.each_with_index do |image, i| %>
-		<li>
-			<%= image_tag image.data.url(:small), :width=> 135, :height => 135 %>
+		<li id='image_<%= image.id %>'>
+			<%= image_tag image.data.url(:small) %>
 		</li>
 	<% end %>
 </ul>
-<script type="text/javascript" charset="utf-8">
-	$("#image_grid").sortable({ items: 'li' });
-</script>
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    // Sorting the list
+    $(document).ready(function(){
+      $('#image_grid').sortable({
+        items: 'li',
+        opacity: 0.4,
+        scroll: true,
+				cursorAt: { 
+        	top: 15, 
+        	left: 15 
+        },
+ 				connectWith: 'li.gallery',
+        update: function(){
+          $.ajax({
+            type: 'post',
+            data: $('#image_grid').sortable('serialize') + '&gallery_id=<%= @gallery.id%>',
+            dataType: 'script',
+            url: '<%= sort_images_path %>'
+					});
+        }
+      });
+    });
+  </script>
+<% end %>
