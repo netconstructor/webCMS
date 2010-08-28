@@ -1,3 +1,4 @@
 class Gallery < ActiveRecord::Base
-  has_many :images, :dependent => :delete_all
+  belongs_to  :client
+  has_many    :images, :dependent => :delete_all
 end

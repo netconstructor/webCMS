@@ -1,4 +1,7 @@
 class Client < ActiveRecord::Base
+  has_many :galleries, :dependent => :delete_all
+  has_many :pages, :dependent => :delete_all
+  
   after_save    :set_upload
   after_destroy :remove_upload
 

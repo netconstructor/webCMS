@@ -4,3 +4,34 @@ This CMS is based on the refineryCMS (at least the user interface is).
 I decided to start with a new Rails 3 app that would be able to host multiple clients on one running rails app.
 
 Please have a look at the refineryCMS because this cms is still in heavy development!
+
+What is possible at the moment:
+- add, remove, edit clients
+	You can specify what:
+		- name
+		- domain name
+		- if the client is active or not
+		- Upload a zip with which contains the html, css, images, flash etc.
+			The zip will be copied to /website/:client_id/ and extracted there. 
+			The zip will be deleted after being extracted.
+- add, remove, edit galleries
+	You can only specify what the name of that gallery should be. 
+	Galleries are automatically coupled to a client.
+	
+- add, remove, sort images. You can also change the gallery an image is associated with. 
+	You can upload up to 5 images at a time with SWFUpload.
+	Images can be reordered by drag and drop. 
+	Images can change gallery by drag and drop. 
+	Image can be deleted by drag and drop.
+	
+
+TO DO ------ 
+	- add, remove, edit, sort menu items.
+	- add, remove, edit, sort content items (like images, galleries, articles etc.) 
+	- add, remove, edit user groups.
+	- add, remove, edit users. Also be able change groups association.
+	
+This CMS has the "DON't bother me with it" license. And is free to be used for any purpose. 
+The software is provided "as is" and there is NO guaranty that it is save, useful or whatever.
+
+As i said earlier. THis cms is still in heavy development!

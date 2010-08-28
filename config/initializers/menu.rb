@@ -1,2 +1,2 @@
 #this are the menu items
-$menus = ['clients', 'galleries']
+$menus = ['clients', 'pages', 'galleries']

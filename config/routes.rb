@@ -1,4 +1,6 @@
 WebCMS::Application.routes.draw do
+  resources :pages
+
   resources :images do
     post  :sort,    :on => :collection
     post  :drop,    :on => :member 

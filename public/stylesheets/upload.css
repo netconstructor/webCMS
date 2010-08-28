@@ -51,7 +51,7 @@ input[disabled]{ border: 1px solid #ccc } /* FF 2 Fix */
 
 label { 
 	width: 150px; 
-	text-align: right; 
+	text-align: left; 
 	display:block;
 	margin-right: 5px;
 }

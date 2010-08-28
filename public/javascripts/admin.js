@@ -1,9 +1,9 @@
 var shiftHeld = false;
 $(document).ready(function(){
-  init_interface();
+ // init_interface();
   init_flash_messages();
   init_delete_confirmations();
-  init_sortable_menu();
+ // init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
