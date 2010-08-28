@@ -7,6 +7,10 @@
 				<%= f.submit :id => 'submit_continue_button', :class => 'wymupdate button', :name => 'continue', :value => "Save &amp; continue editing".html_safe %>
 			<% elsif button == 'cancel' %>
 				<%= link_to :cancel, self.send("#{controller}_path"), :id => 'cancel_button', :class => 'close_dialog button', :title => "Cancelling will lose all changes you've made to this page" %>
+			<% elsif button == 'back' %>
+				<%= link_to :back, self.send("#{controller}_path"), :id => 'cancel_button', :class => 'close_dialog button', :title => "To #{controller.capitalize} " %>
+			<% elsif button == 'show' %>
+				<%= link_to :back, controller, :id => 'cancel_button', :class => 'close_dialog button', :title => "Go back" %>
 			<% end %>
 		<% end %>		
 	</div>

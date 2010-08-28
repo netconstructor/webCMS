@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+
+
 module WebCMS
   class Application < Rails::Application
     Paperclip::Railtie.insert
@@ -35,7 +37,11 @@ module WebCMS
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-
+    
+    # Add additional load paths for your own custom dirs
+    %w(observers mailers middleware).each do |dir|
+      config.autoload_paths << "#{config.root}/app/#{dir}"
+    end
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end

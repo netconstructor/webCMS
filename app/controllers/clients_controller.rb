@@ -38,4 +38,8 @@ class ClientsController < ApplicationController
     
     redirect_to clients_url, :notice => 'Client was destroyed.'
   end
+  def change  
+    session[:client_id] = params[:id].to_i if Client.exists?(params[:id])
+    redirect_to clients_url, :notice => 'Client was changed'
+  end
 end

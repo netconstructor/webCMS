@@ -1,7 +1,10 @@
 <% content_for :actions do %>
 	<% if params[:id] != nil %>
 	<li>
-		<%= link_to 'New Image', new_gallery_path, :class => 'add_icon' %>
+		<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
+	</li>
+	<li>
+		<%= link_to 'Delete Image', new_image_path(:gallery_id => params[:id]), :class => 'delete_icon' %>
 	</li>
 	<br/>
 	<% end %>

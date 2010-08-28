@@ -1,9 +1,12 @@
 WebCMS::Application.routes.draw do
+  resources :images
+
   resources :galleries
 
   resources :domains
 
   resources :clients
+  match 'clients/:id/change' => 'clients#change'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
