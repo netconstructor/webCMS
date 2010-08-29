@@ -480,10 +480,10 @@ header p {
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-#records.tree ul li.branch_start, .tree ul li.branch_start {
+#records.tree ul li:first-child{
   background-image: url('/images/refinery/branch-start.gif');
 }
-#records.tree ul li.branch_end, .tree ul li.branch_end {
+#records.tree ul li.jstree-last{
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
@@ -492,11 +492,28 @@ header p {
 #records.tree li span.spacing, .tree li span.spacing {
   display: none;
 }
-#records.tree ul li > div:hover, .tree ul li > div:hover {
+#records.tree ul li:hover{
   background-color: #EAEAEA;
 }
-#records.tree ul.ui-sortable li div:hover, .tree ul.ui-sortable li div:hover {
-  background-color: inherit;
+#records.tree ul li a ins.jstree-icon {
+	display: none;
+}
+#records.tree ul a{
+	border-bottom: none;
+}
+#records.tree ul li ins{
+	width: 9px;
+	height: 16px;
+	margin: 4px 20px 0px -10px;
+	background-image: url('/images/tree/arrow_closed.png');
+	background-repeat: no-repeat;
+}
+#records.tree ul li.jstree-open > ins.jstree-icon{
+	width: 9px;
+	height: 16px;
+	margin: 7px 20px 0px -10px;
+	background-image: url('/images/tree/arrow_open.png');
+	background-repeat: no-repeat;
 }
 
 #content h2 {
@@ -645,11 +662,6 @@ label.stripped {
   margin: 3px 3px;
   line-height: inherit;
   border-bottom: 0px none;
-}
-
-#content #records.tree > ul li .actions a {
-  margin: 3px 3px 0px 3px;
-  line-height: 24px;
 }
 .actions a * {
   padding: 4px 4px 1px 4px;

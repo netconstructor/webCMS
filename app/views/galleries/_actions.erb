@@ -4,7 +4,7 @@
 			<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
 		</li>
 		<li id='destroy_image'>
-			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon' %>
+			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon', :title => "Drop image to delete it." %>
 		</li>
 		<br/>
 	<% end %>

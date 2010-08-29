@@ -1,0 +1,6 @@
+<li id='page_<%= page.id %>' class="clearfix record" >
+	<%= link_to page.title, edit_page_path(page) %>
+	<ul>
+		<%= render :partial => 'page', :collection => page.children %>
+	</ul>
+</li>
