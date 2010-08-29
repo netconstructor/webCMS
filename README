@@ -23,10 +23,13 @@ What is possible at the moment:
 	Images can be reordered by drag and drop. 
 	Images can change gallery by drag and drop. 
 	Image can be deleted by drag and drop.
-	
+
+- add, remove, edit, sort pages.
+	You can specify the name of a "menu item" (page).
+	Pages can be reordered by drag and drop. 
+	A Page can change parent by drag and drop. 
 
 TO DO ------ 
-	- add, remove, edit, sort menu items.
 	- add, remove, edit, sort content items (like images, galleries, articles etc.) 
 	- add, remove, edit user groups.
 	- add, remove, edit users. Also be able change groups association.
