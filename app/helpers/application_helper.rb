@@ -12,7 +12,7 @@ module ApplicationHelper
   def item    (f, type, name)
     render :partial => "shared/form/#{type}", :locals => {:f => f, :name => name}
   end
-  def buttons (f = nil, controller, buttons)
-    render :partial => 'shared/form/buttons', :locals => {:f => f, :controller => controller, :buttons => buttons}
+  def buttons (f, controller, buttons, item = nil)
+    render :partial => 'shared/form/buttons', :locals => {:f => f, :controller => controller, :buttons => buttons, :item => item}
   end
 end
