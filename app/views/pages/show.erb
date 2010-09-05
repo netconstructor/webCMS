@@ -32,9 +32,9 @@
 		<div id='page_part_editors'>
 			<% @parts.each do |part| %>
 				<div class='item records' id='part_<%= part.id %>' style="<%= 'display:none;' if @parts.first.id != part.id %> border:dashed 1px;" >
-					<ul class='sortable'>
+					<ul id='part_<%= part.id %>' class='sortable'>
 						<% @page.items.find_all_by_part_id(part.id).each do |item| %>
-							<li class='clearfix record on'>
+							<li id='item_<%= item.id %>' class='clearfix record on'>
 								<span class='title'>
 									<%= item.title %><span class="preview">&nbsp;</span>
 								</span>
@@ -44,7 +44,25 @@
 								</span>
 							</li>
 						<% end %>
-					<ul>
+					</ul>
+					<script type="text/javascript" charset="utf-8">
+						$(document).ready(function(){
+      				$('ul#part_<%= part.id %>').sortable({
+								items: 'li',
+								opacity: 0.4,
+								scroll: true,
+								axis: 'y',
+								update: function(){
+									$.ajax({
+										type: 'post',
+										data: $('ul#part_<%= part.id %>').sortable('serialize')+ '&page_id=<%= @page.id%>'+'&part_id=<%= part.id%>',
+										dataType: 'script',
+										url: '<%= sort_items_path %>'
+									});
+								}
+							});
+						});
+					</script>
 				</div>
 			<% end %>
 		</div>
@@ -66,24 +84,4 @@
 		$('.part_'+id).show();
 		$('#part_'+id).show();
 	}
-	$(document).ready(function(){
-      $('.sortable').sortable({
-        items: 'li',
-        opacity: 0.4,
-        scroll: true,
-				cursorAt: { 
-        	top: 15, 
-        	left: 15 
-        },
- 				connectWith: 'li.gallery',
-        update: function(){
-          $.ajax({
-            type: 'post',
-            data: $('#image_grid').sortable('serialize'),
-            dataType: 'script',
-            url: '<%= sort_images_path %>'
-					});
-        }
-      });
-  });
 </script>

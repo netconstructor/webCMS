@@ -1,7 +1,11 @@
 WebCMS::Application.routes.draw do
+  resources :videos
+
   resources :articles
 
-  resources :items
+  resources :items do
+    post :sort, :on => :collection
+  end
 
   resources :parts
 

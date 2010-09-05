@@ -1,0 +1,22 @@
+<%= hidden_field :item, :link_type %>
+<%= f.select :link_id, Gallery.all.collect{|p| [p.title, p.id]}%>
+
+<ul id="image_grid" class="clearfix">
+	<% Image.all.each_with_index do |image, i| %>
+		<li id='image_<%= image.id %>' class='gallery_<%=image.gallery_id %>' style="<%= 'display:none;' if item.link_id != image.gallery_id %>">
+			<%= image_tag image.data.url(:small) %>
+		</li>
+	<% end %>
+</ul>
+<script type="text/javascript" charset="utf-8">
+	$('#item_link_id').change(function() {
+		var id = '';
+		$("#item_link_id option:selected").each(function () {
+  		id = $(this).val();
+		});
+		$('#image_grid li').each(function(){
+			$(this).hide();
+		});
+		$('.gallery_'+id).show();
+	});
+</script>

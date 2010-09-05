@@ -5,7 +5,7 @@
 				<%= hidden_field :item, :page_id %>
 				<%= hidden_field :item, :part_id %>
 				<%= item f, :text_field, 	:title %>
-				<%= render :partial => "items/forms/#{@item.link_type.downcase}", :locals => {:f => f, :article => @item.link} %>
+				<%= render :partial => "items/forms/#{@item.link_type.downcase}", :locals => {:f => f, :item => @item} %>
 				<%= buttons f, :pages, ['update', 'updateEdit', 'cancel'] %>
 			</div>
 		</div>
