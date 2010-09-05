@@ -16,7 +16,7 @@
 	</div>
 	<div class='form-actions-right'>
 		<% buttons.each do |button| %>
-			<% if button == 'delete'%>
+			<% if button == 'delete' && item.id != nil %>
 				<%= link_to :delete, item, :confirm => 'Are you sure?', :method => :delete,:id=> 'delete_button', :class=>'button confirm-delete', :title=> "Remove this #{controller.class.to_s.downcase} forever" %>
 			<% end %>
 		<% end %>

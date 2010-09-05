@@ -3,21 +3,26 @@ class PagesController < ApplicationController
     @pages = Page.find_all_by_parent_id(nil, :conditions => {:client_id => session[:client_id]})
   end
   def show    
-    @page = Page.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @page }
+    if Page.exists?(params[:id])
+      @page = Page.find(params[:id])
+      @parts = Part.find_all_by_client_id(session[:client_id])
+      if @page.client_id != session[:client_id]
+        redirect_to pages_url, :notice => 'You are not allowed to access that page.'
+      end
+    else
+      redirect_to pages_url, :notice => 'That page does not exist.'
     end
   end
   def new     
     @page = Page.new
+    @parts = Part.find_all_by_client_id(session[:client_id])
     render 'form'
   end
   def edit    
     if Page.exists?(params[:id])
       @page = Page.find(params[:id])
       if @page.client_id == session[:client_id]
+        @parts = Part.find_all_by_client_id(session[:client_id])
         render 'form'
       else
         redirect_to pages_url, :notice => 'You are not allowed to edit that page.'

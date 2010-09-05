@@ -1,0 +1,13 @@
+<%= form_for  @item do |f| %>
+	<div class='field'>
+		<div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+			<div id='page_part_editors'>
+				<%= hidden_field :item, :page_id %>
+				<%= hidden_field :item, :part_id %>
+				<%= item f, :text_field, 	:title %>
+				<%= render :partial => "items/forms/#{@item.link_type.downcase}", :locals => {:f => f, :article => @item.link} %>
+				<%= buttons f, :pages, ['update', 'updateEdit', 'cancel'] %>
+			</div>
+		</div>
+	</div>
+<% end %>

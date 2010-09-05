@@ -3,5 +3,22 @@
 	<%= item f, :text_field, 	:domain 	%>
 	<%= item f, :check_box,		:active 	%>
 	<%= item f, :file_field,	:zip 			%>
+	
+	<%= f.fields_for :parts do |part| %>
+		<%= render 'part_fields',:f => part%>
+	<% end %>
+	<div><%= link_to_add_fields "Add part", f, :parts %></div>
+	
 	<%= buttons f, :clients, ['update', 'updateEdit', 'cancel'] %>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+		function remove_fields(link){
+			$(link).prev('input[type=hidden]').val('1');
+			$(link).closest(".fields").hide();
+		}
+		function add_fields(link, association, content){
+  		var new_id = new Date().getTime();
+  		var regexp = new RegExp("new_" + association, "g")
+  		$(link).parent().before(content.replace(regexp, new_id));
+		}
+</script>

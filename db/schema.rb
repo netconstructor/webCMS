@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100828175239) do
+ActiveRecord::Schema.define(:version => 20100905105915) do
+
+  create_table "articles", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -45,11 +51,29 @@ ActiveRecord::Schema.define(:version => 20100828175239) do
     t.datetime "updated_at"
   end
 
+  create_table "items", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "part_id"
+    t.integer  "position"
+    t.integer  "link_id"
+    t.string   "link_type"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.integer  "client_id"
     t.integer  "parent_id"
     t.integer  "position"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parts", :force => true do |t|
+    t.string   "name"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

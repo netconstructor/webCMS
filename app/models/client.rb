@@ -1,6 +1,9 @@
 class Client < ActiveRecord::Base
-  has_many :galleries, :dependent => :delete_all
-  has_many :pages, :dependent => :delete_all
+  has_many :galleries,  :dependent => :delete_all
+  has_many :pages,      :dependent => :delete_all
+  has_many :parts,      :dependent => :delete_all
+  
+  accepts_nested_attributes_for :parts, :allow_destroy => true
   
   after_save    :set_upload
   after_destroy :remove_upload

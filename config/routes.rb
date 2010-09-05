@@ -1,4 +1,10 @@
 WebCMS::Application.routes.draw do
+  resources :articles
+
+  resources :items
+
+  resources :parts
+
   resources :pages do
     post :move, :on => :collection
   end

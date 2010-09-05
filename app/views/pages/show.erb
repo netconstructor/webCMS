@@ -1,0 +1,89 @@
+<% content_for :actions do %>
+	<% @parts.each do |part| %>
+		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Article', :type => 'article', :page => @page, :first => @parts.first.id} %>
+		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Gallery', :type => 'gallery', :page => @page, :first => @parts.first.id} %>
+		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Video', 	:type => 'video', 	:page => @page, :first => @parts.first.id} %>
+	<% end %>
+<% end %>
+<% content_for :records do %>
+	<li class='clearfix record on'>
+		<span class='title'>
+			<%= @page.title %> <span class="preview">&nbsp;</span>
+		</span>
+
+		<span class='actions'>
+			<%= link_to_edit 	 @page %>
+			<%= link_to_delete @page %>
+		</span>
+	</li>
+<% end %>
+
+<div class='records'>
+	<div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+		<ul id='page_parts'>
+			<% if @parts.count > 1 %>
+				<% @parts.each do |part| %>
+					<li class="ui-state-default <%= 'ui-state-active' if @parts.first.id == part.id %>">
+						<%= link_to_function part.name, "change_part_window(this, #{part.id})" %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+		<div id='page_part_editors'>
+			<% @parts.each do |part| %>
+				<div class='item records' id='part_<%= part.id %>' style="<%= 'display:none;' if @parts.first.id != part.id %> border:dashed 1px;" >
+					<ul class='sortable'>
+						<% @page.items.find_all_by_part_id(part.id).each do |item| %>
+							<li class='clearfix record on'>
+								<span class='title'>
+									<%= item.title %><span class="preview">&nbsp;</span>
+								</span>
+								<span class='actions'>
+									<%= link_to_edit 	 item %>
+									<%= link_to_delete item %>
+								</span>
+							</li>
+						<% end %>
+					<ul>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	function change_part_window(link, id){
+		$('#page_parts li').each(function(){
+			$(this).removeClass('ui-state-active');
+  	});
+		$(link).closest('li').addClass('ui-state-active');
+		$('#page_part_editors div.item').each(function(){
+			$(this).hide();
+		});
+		$('#actions ul li').each(function(){
+			$(this).hide();
+		});
+		$('.part_'+id).show();
+		$('#part_'+id).show();
+	}
+	$(document).ready(function(){
+      $('.sortable').sortable({
+        items: 'li',
+        opacity: 0.4,
+        scroll: true,
+				cursorAt: { 
+        	top: 15, 
+        	left: 15 
+        },
+ 				connectWith: 'li.gallery',
+        update: function(){
+          $.ajax({
+            type: 'post',
+            data: $('#image_grid').sortable('serialize'),
+            dataType: 'script',
+            url: '<%= sort_images_path %>'
+					});
+        }
+      });
+  });
+</script>

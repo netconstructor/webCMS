@@ -56,9 +56,15 @@ select.widest {
   padding-left: 15px;
   padding-top: 0px;
 }
-#records {
+.sortable {
+	position: relative;
+}
+.sortable li{
+	position: fixed;
+}
+.records {
   float: left;
-  width: 67.7%;
+  width: 647px;
 }
 #actions ul {
   margin: 0px 0px 18px 0px;
@@ -403,11 +409,11 @@ header p {
 .filter {
   float: right;
 }
-#records > ul, #records > #recent_activity > ul, #records > #recent_inquiries > ul {
+.records > ul, .records > #recent_activity > ul, .records > #recent_inquiries > ul {
   margin-left: 0;
   padding-left: 0;
 }
-#records > ul li, #records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
+.records > ul li, .records > #recent_activity > ul li, .records > #recent_inquiries > ul li {
   list-style: none;
   padding: 0px 5px;
   vertical-align: top;
@@ -415,17 +421,14 @@ header p {
   line-height: 35px;
   position: relative;
 }
-#records > ul.ui-sortable li {
-  position: static;
-}
-#content #records > ul li .actions a {
+#content .records > ul li .actions a {
   line-height: 29px;
 }
-#records ul.clickable li {
+.records ul.clickable li {
   padding: 0px;
   margin-bottom: 0px;
 }
-#records ul.clickable li a {
+.records ul.clickable li a {
   padding: 0px 5px;
   vertical-align: top;
   margin-bottom: 2px;
@@ -433,82 +436,82 @@ header p {
   display: block;
   border-bottom: 0px none;
 }
-#records > #recent_activity, #records > #recent_inquiries {
+.records > #recent_activity, .records > #recent_inquiries {
   float: left;
   width: 48%;
 }
-#records > #recent_inquiries {
+.records > #recent_inquiries {
   margin-left: 21px;
 }
-#records.one_list > #recent_activity, #records.one_list > #recent_inquiries {
+.records.one_list > #recent_activity, .records.one_list > #recent_inquiries {
   width: 100%;
 }
-#records .left-column {
+.records .left-column {
   float: left;
   width: 65%;
 }
-#records .left-column img {
+.records .left-column img {
   vertical-align: bottom;
   margin-top: 1px;
   margin-right: 5px;
 }
-#records .right-column {
+.records .right-column {
   float: right;
   width: 34%;
   text-align: right;
 }
-#records .on {
+.records .on {
   background-color: #EAEAEA;
 }
-#records .off, #records .on-hover {
+.records .off, .records .on-hover {
   background-color: white;
 }
 #pagination ul a:hover, #pagination .on {
   background: url('/images/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
-#records ul.empty {
+.records ul.empty {
   display: none;
 }
-#records.tree ul li ul, .tree ul li ul {
+.records.tree ul li ul, .tree ul li ul {
   padding: 0;
 }
-#records.tree ul li, .tree ul li {
+.records.tree ul li, .tree ul li {
   margin: 0px;
   padding: 4px 0 0 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-#records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
+.records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-#records.tree ul li:first-child{
+.records.tree ul li:first-child{
   background-image: url('/images/refinery/branch-start.gif');
 }
-#records.tree ul li.jstree-last{
+.records.tree ul li.jstree-last{
   background-image: url('/images/refinery/branch-end.gif');
 }
-#records.tree li {
+.records.tree li {
   line-height: 25px;
 }
-#records.tree li span.spacing, .tree li span.spacing {
+.records.tree li span.spacing, .tree li span.spacing {
   display: none;
 }
-#records.tree ul li:hover{
+.records.tree ul li:hover{
   background-color: #EAEAEA;
 }
-#records.tree ul li a ins.jstree-icon {
+.records.tree ul li a ins.jstree-icon {
 	display: none;
 }
-#records.tree ul a{
+.records.tree ul a{
 	border-bottom: none;
 }
-#records.tree ul li ins{
+.records.tree ul li ins{
 	width: 9px;
 	height: 16px;
 	margin: 4px 20px 0px -10px;
 	background-image: url('/images/tree/arrow_closed.png');
 	background-repeat: no-repeat;
 }
-#records.tree ul li.jstree-open > ins.jstree-icon{
+.records.tree ul li.jstree-open > ins.jstree-icon{
 	width: 9px;
 	height: 16px;
 	margin: 7px 20px 0px -10px;
@@ -523,7 +526,7 @@ header p {
   margin-top: 10px;
   font-weight: bold;
 }
-#records h2, #actions h2 {
+.records h2, #actions h2 {
   margin-top: 0px;
 }
 .pagination {
@@ -606,7 +609,7 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
-#records.files .record .title, #dialog_main #resource_file_area #pages_list ul li a.page_link {
+.records.files .record .title, #dialog_main #resource_file_area #pages_list ul li a.page_link {
   display:inline-block;
   padding-left:24px;
   min-height:16px;
@@ -618,28 +621,28 @@ label.stripped {
   background-position:5px center;
   display:block;
 }
-#records.files .record .title.pdf, #dialog_main #resource_file_area #pages_list ul li a.page_link.pdf {
+.records.files .record .title.pdf, #dialog_main #resource_file_area #pages_list ul li a.page_link.pdf {
 	background-image: url('/images/refinery/icons/pdf.png');
 }
-#records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area #pages_list ul li a.page_link.gif, #dialog_main #resource_file_area #pages_list ul li a.page_link.png, #dialog_main #resource_file_area #pages_list ul li a.page_link.tiff {
+.records.files .record .title.jpg, .records.files .record .title.gif, .records.files .record .title.jpeg, .records.files .record .title.png, .records.files .record .title.tiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area #pages_list ul li a.page_link.gif, #dialog_main #resource_file_area #pages_list ul li a.page_link.png, #dialog_main #resource_file_area #pages_list ul li a.page_link.tiff {
 	background-image: url('/images/refinery/icons/img.png');
 }
-#records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.doc, #dialog_main #resource_file_area #pages_list ul li a.page_link.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.pages {
+.records.files .record .title.doc, .records.files .record .title.pages, .records.files .record .title.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.doc, #dialog_main #resource_file_area #pages_list ul li a.page_link.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.pages {
 	background-image: url('/images/refinery/icons/doc.png');
 }
-#records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area #pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area #pages_list ul li a.page_link.keynote {
+.records.files .record .title.ppt, .records.files .record .title.keynote, #dialog_main #resource_file_area #pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area #pages_list ul li a.page_link.keynote {
 	background-image: url('/images/refinery/icons/ppt.png');
 }
-#records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area #pages_list ul li a.page_link.xls, #dialog_main #resource_file_area #pages_list ul li a.page_link.numbers {
+.records.files .record .title.xls, .records.files .record .title.numbers, #dialog_main #resource_file_area #pages_list ul li a.page_link.xls, #dialog_main #resource_file_area #pages_list ul li a.page_link.numbers {
 	background-image: url('/images/refinery/icons/xls.png');
 }
-#records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area #pages_list ul li a.page_link.zip, #dialog_main #resource_file_area #pages_list ul li a.page_link.rar {
+.records.files .record .title.zip, .records.files .record .title.rar, #dialog_main #resource_file_area #pages_list ul li a.page_link.zip, #dialog_main #resource_file_area #pages_list ul li a.page_link.rar {
 	background-image: url('/images/refinery/icons/zip.png');
 }
-#records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area #pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area #pages_list ul li a.page_link.wav, #dialog_main #resource_file_area #pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.m4a {
+.records.files .record .title.mp3, .records.files .record .title.wav, .records.files .record .title.aiff, .records.files .record .title.m4a, #dialog_main #resource_file_area #pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area #pages_list ul li a.page_link.wav, #dialog_main #resource_file_area #pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.m4a {
   background-image: url('/images/refinery/icons/music.png');
 }
-#records .actions {
+.records .actions {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -648,7 +651,7 @@ label.stripped {
   display: block;
   line-height: 28px;
 }
-#records.tree .actions {
+.records.tree .actions {
   line-height: 22px;
   top: 1px;
 }
@@ -670,7 +673,7 @@ label.stripped {
   vertical-align: middle;
   padding: 2px 4px 4px 4px;
 }
-#records.tree .actions a img {
+.records.tree .actions a img {
   padding-top: 4px;
 }
 #image_grid .actions a img {
@@ -1142,11 +1145,11 @@ ul#image_grid li {
   overflow: hidden;
 }
 
-#records ul#image_grid li .actions {
+.records ul#image_grid li .actions {
   top: auto;
   bottom: 0px;
 }
-#records ul#image_grid li .actions a {
+.records ul#image_grid li .actions a {
   line-height: 24px;
 }
 ul#image_grid li.row-end {

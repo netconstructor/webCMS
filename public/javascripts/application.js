@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	select_client();
 });
+
 select_client = function() {
 	$('#client_id').change(function() {
 		var id = '';

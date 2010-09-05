@@ -4,7 +4,7 @@
 	</li>
 <% end %>
 
-<div id='records' class='tree'>
+<div class='records tree'>
 	<ul>
 		<%= render :partial => 'page', :collection => @pages %>
 	</ul>
@@ -13,7 +13,7 @@
 <% content_for :javascript do %>
   <script type='text/javascript'>
 		$(document).ready(function(){
-			$("#records").jstree({
+			$(".records").jstree({
 				"plugins" : ["html_data", "cookies", "dnd", "types"], 
 				"types" 	: {
 					"max_depth" : 3,

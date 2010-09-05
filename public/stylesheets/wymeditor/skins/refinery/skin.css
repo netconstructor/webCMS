@@ -31,7 +31,7 @@
     .wym_skin_refinery .wym_iframe       { width: 100%; }
     .wym_skin_refinery .wym_iframe iframe { border: 1px solid #CCCCCC;}
     .wym_skin_refinery .wym_iframe iframe    { width: 100%; background: white }
-    textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe { height: 400px; }
+    textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe { height: 400px; width:940px; }
 
 /*AREAS*/
     .wym_skin_refinery .wym_area_left      { width: 150px; float: left;}
