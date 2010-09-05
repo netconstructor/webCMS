@@ -28,9 +28,12 @@ What is possible at the moment:
 	You can specify the name of a "menu item" (page).
 	Pages can be reordered by drag and drop. 
 	A Page can change parent by drag and drop. 
+	
+- add, remove, edit, sort content items.
+	Content items can be a Article, gallery or youtube video
+	Content items can be reordered by drag and drop
 
 TO DO ------ 
-	- add, remove, edit, sort content items (like images, galleries, articles etc.) 
 	- add, remove, edit user groups.
 	- add, remove, edit users. Also be able change groups association.
 	
