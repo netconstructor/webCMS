@@ -1,0 +1,19 @@
+<%= form_for  @group do |f| %>
+	<%= item f, :text_field, 	:title 				%>
+	<%= item f, :check_box,		:admin 	%>
+	<div id='pages' class="<%= 'hide' if @group.admin == true %>">
+		<% for page in Page.find(:all, :conditions => {:parent_id => nil, :client_id => session[:client_id]}) %>
+			<%= check_box_tag :page_ids, page.id, @group.pages.include?(page), :name => 'group[page_ids][]' %>
+    	<%= page.title %><br/>
+		<% end %>
+	</div>
+	<%= buttons f, :groups, ['update', 'updateEdit', 'cancel'] %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$('#group_admin:checkbox').click(function () {
+			$('#pages').toggleClass('hide', $('#group_admin:checkbox:checked').length);
+		});
+	});
+</script>

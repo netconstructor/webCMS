@@ -1,0 +1,14 @@
+<% render :partial => 'actions' %>
+
+<% content_for :records do %>
+	<li class='clearfix record on'>
+		<span class='title'>
+			<%= @group.title %> <span class="preview">&nbsp;</span>
+		</span>
+
+		<span class='actions'>
+			<%= link_to_edit 	 @group %>
+			<%= link_to_delete @group %>
+		</span>
+	</li>
+<% end %>

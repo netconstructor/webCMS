@@ -1,0 +1,12 @@
+<div id='existing_image_area' class='dialog_area'>
+  <input type='hidden' name='selected_image' id='selected_image' />
+  <div id='existing_image_area_content' class='clearfix'>
+    <ul>
+      <% Image.all.each do |image| %>
+        <li<%= " class='selected'" if 3 == image.id %>>
+					<%= image_tag image.data.url(:small), :id => "image_#{image.id}", :'data-id' => image.id %>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<% content_for :actions do %>
+	<% if params[:id] != nil %>
+		<li>
+			<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
+		</li>
+		<li id='destroy_image'>
+			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon', :title => "Drop image to delete it." %>
+		</li>
+		<br/>
+	<% end %>
+	<% @groups.each do |group| %>
+		<li id='group_<%= group.id %>' class='<%= 'group' if @group != nil && group.id != @group.id %>'>
+			<%= link_to group.title, group, :class => 'img_icon' %>
+		</li>
+	<% end %>
+	<br/>
+	<li>
+		<%= link_to 'New Group', new_group_path, :class => 'add_icon' %>
+	</li>
+<% end %>

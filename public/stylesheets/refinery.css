@@ -19,6 +19,12 @@ body {
   line-height: 1.5em;
   background: black url('/images/refinery/page_bg.png') repeat;
 }
+#page #content #pages.show{
+	display:inline;
+}
+#page #content #pages.hide{
+	display:none;
+}
 acronym {
   cursor: help;
 }

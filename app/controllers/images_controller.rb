@@ -62,4 +62,8 @@ class ImagesController < ApplicationController
     end
     render :nothing => true
   end
+  def insert  
+    render :json => { :error => false, :url => 'assets/photos/5/small.jpg', :width => 300, :height => 300 }
+    #render :layout => 'wymiframe'
+  end
 end

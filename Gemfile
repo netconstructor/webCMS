@@ -12,6 +12,7 @@ gem 'rubyzip'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'acts_as_tree'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'

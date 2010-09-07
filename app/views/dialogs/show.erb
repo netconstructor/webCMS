@@ -1,0 +1,8 @@
+<form id='wym_dialog_form' class='wym_dialog wym_dialog_<%= @dialog_type %>'>
+  <input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='<%= @dialog_type %>' />
+  <iframe src='/images/insert' id='dialog_frame' frameborder='0'></iframe>
+  <div class='wym_hideables'>
+    <input id='wym_dialog_submit' class='wym_submit submit_dialog button' type='button' value='<%= t('.save') %>' />
+    <a id='wym_dialog_cancel' href='' class='wym_cancel close_dialog button'><%= t('.cancel') %></a>
+  </div>
+</form>

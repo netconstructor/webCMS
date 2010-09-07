@@ -1,10 +1,10 @@
 == Welcome to WebCMS
 
 This CMS is based on the refineryCMS (at least the user interface is).
-I decided to start with a new Rails 3 app that would be able to host multiple clients on one running rails app.
+I decided to start with a new Rails 3 app that would be able to have multi-tenanted hosting capabilities.
 
-Please have a look at the refineryCMS because this cms is still in heavy development!
-
+Please have a look at the refineryCMS because this cms is still in heavy development (and probably doesn't suit your need (yet))!
+having said that:
 What is possible at the moment:
 - add, remove, edit clients
 	You can specify what:

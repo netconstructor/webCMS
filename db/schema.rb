@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905182556) do
+ActiveRecord::Schema.define(:version => 20100907095019) do
 
   create_table "articles", :force => true do |t|
     t.text     "body"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20100905182556) do
     t.datetime "updated_at"
   end
 
+  create_table "groups", :force => true do |t|
+    t.integer  "client_id"
+    t.string   "title"
+    t.boolean  "admin",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "images", :force => true do |t|
     t.integer  "gallery_id"
     t.integer  "position"
@@ -62,6 +70,11 @@ ActiveRecord::Schema.define(:version => 20100905182556) do
     t.datetime "updated_at"
   end
 
+  create_table "memberships", :id => false, :force => true do |t|
+    t.integer "group_id", :null => false
+    t.integer "page_id",  :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.integer  "client_id"
     t.integer  "parent_id"
@@ -74,6 +87,14 @@ ActiveRecord::Schema.define(:version => 20100905182556) do
   create_table "parts", :force => true do |t|
     t.string   "name"
     t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "username"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
