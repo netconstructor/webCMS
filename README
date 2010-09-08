@@ -33,9 +33,16 @@ What is possible at the moment:
 	Content items can be a Article, gallery or youtube video
 	Content items can be reordered by drag and drop
 
+- add, remove, edit groups.
+	Groups can be edited, created and assigned to pages (this way users in a group can login on a website and see those item)
+	Groups can be admin (then they have cms access)
+	
+- add, remove, edit users.
+	Users can be dragged into groups.
+	Users can be deleted by drag and drop.
+
 TO DO ------ 
-	- add, remove, edit user groups.
-	- add, remove, edit users. Also be able change groups association.
+	- Add Plugin and Theme and control (what client has access to which plugins and themes)
 	
 This CMS has the MIT license (please see license.md). And is free to be used for any purpose. 
 The software is provided "as is" and there is NO guaranty that it is save, useful or whatever.
