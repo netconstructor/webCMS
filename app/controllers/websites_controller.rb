@@ -1,12 +1,16 @@
 class WebsitesController < ApplicationController
-  skip_before_filter :authorize_user
+  skip_before_filter :authorize_user, :load_config, :authorize_plugin
   layout false
   
   def index   
-    render :layout => 'website'
+    url = "websites/#{session[:client_id].to_s}/index.erb"
+    if FileTest.exists?(url)
+      render :layout => 'website', :file => url
+    else
+      render :nothing => true, :layout => false, :status => 404
+    end
   end
   def public  
-    puts params[:path]
     url = "websites/#{session[:client_id].to_s}/#{params[:path]}.#{params[:format]}"
     if FileTest.exists?(url)
       respond_to do |format|

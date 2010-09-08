@@ -13,7 +13,6 @@
   ".c" => "text/plain",
   ".cc" => "text/plain",
   ".cpp" => "text/plain",
-  ".css" => "text/css",
   #  ".csv" => "text/csv",
   ".dsl" => "text/dsssl",
   ".dsssl" => "text/dsssl",

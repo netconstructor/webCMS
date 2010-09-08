@@ -1,0 +1,6 @@
+plugins:
+  clients:    ['clients', 'parts']
+  galleries:  ['galleries', 'images']
+  pages:      ['pages', 'items']
+  groups:     ['groups', 'users']
+domain:   'localhost'

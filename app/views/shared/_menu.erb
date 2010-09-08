@@ -2,9 +2,11 @@
 	<div id='header'>
 		<div id='header_content'>
 			<nav id="menu">
-				<% $menus.each do |item| -%>
-					<%= link_to item, "/#{item}", :class => 'active' if item==params[:controller] %>
-					<%= link_to item, "/#{item}" if item!=params[:controller] %>
+				<% $settings['plugins'].each do |plugin| -%>
+					<% if $config['plugins'].include?(plugin) %>
+						<%= link_to plugin, "/#{plugin}", :class => 'active' if plugin==params[:controller] %>
+						<%= link_to plugin, "/#{plugin}" if plugin!=params[:controller] %>
+					<% end %>
 				<% end %>
 			</nav>
 		</div>

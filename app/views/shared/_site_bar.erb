@@ -4,7 +4,7 @@
 			<a href="/">Switch to your website</a>
 		</div>
 		<div id='site_bar_branding'>
-			<% if session[:admin] == true %>
+			<% if $settings['plugins'].include?('clients') -%>
 				<%= collection_select(:client, :id, Client.all, :id, :name, {:selected => session[:client_id]}) -%>
 			<% end %>
 			<span id='site_bar_company_name'>Website-development.nl</span>
