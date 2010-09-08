@@ -19,6 +19,21 @@ body {
   line-height: 1.5em;
   background: black url('/images/refinery/page_bg.png') repeat;
 }
+#error_explanation ul{
+	list-style-type:none; 
+	margin:0px;
+	padding:0px;
+}
+#error_explanation ul li{
+	height: 20px;
+	margin-top: 5px;
+	padding: 7px 0px 0px 30px;
+	background-image: url('/images/refinery/icons/cross.png');
+	background-color: #f5e0e0;
+	border-color: #a00000;
+	color:#a00000;
+
+}
 #page #content #pages.show{
 	display:inline;
 }

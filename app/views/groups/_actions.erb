@@ -1,20 +1,97 @@
 <% content_for :actions do %>
 	<% if params[:id] != nil %>
 		<li>
-			<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
+			<%= link_to 'New User', new_user_path(:group_id => params[:id]), :class => 'add_icon', :title => "Create new user." %>
 		</li>
-		<li id='destroy_image'>
-			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon', :title => "Drop image to delete it." %>
+		<li id='destroy_user'>
+			<%= link_to 'Drop to delete user', '#', :class => 'delete_icon', :title => "Drop user to delete it." %>
 		</li>
 		<br/>
 	<% end %>
 	<% @groups.each do |group| %>
-		<li id='group_<%= group.id %>' class='<%= 'group' if @group != nil && group.id != @group.id %>'>
-			<%= link_to group.title, group, :class => 'img_icon' %>
-		</li>
+		<% if @group != nil && group.id != @group.id %>
+			<li id='group_<%= group.id %>' class='group'>
+				<%= link_to group.title, group, :class => 'img_icon', :title => "Drop user to insert" %>
+			</li>
+		<% else %>
+			<li id='group_<%= group.id %>'>
+				<%= link_to group.title, group, :class => 'img_icon' %>
+			</li>
+		<% end %>
 	<% end %>
 	<br/>
 	<li>
-		<%= link_to 'New Group', new_group_path, :class => 'add_icon' %>
+		<%= link_to 'New Group', new_group_path, :class => 'add_icon', :title => "Create new user." %>
 	</li>
+<% end %>
+
+	
+<% if @group != nil %>
+	<% content_for :javascript do %>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("li#destroy_user").droppable({ 
+				hoverClass: 'hover',
+				over: function(event, ui) {
+					ui.draggable.animate({
+    				width: '30',
+    				height: '30'
+  				}, 100, function() {});
+					ui.draggable.find('span.actions').hide();
+				},
+				tolerance: 'pointer',
+				out: function(event, ui) {
+					ui.draggable.animate({
+						width: '637',
+    				height: '35'
+  				}, 100, function() {});
+					ui.draggable.find('span.actions').show();
+				},
+				drop: function(event, ui) {
+					ui.draggable.hide();
+					$.ajax({
+            type: 'post',
+            dataType: 'script',
+            url: '/users/'+ui.draggable.attr('id')+'?_method=DELETE'
+					});
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("li.group").droppable({ 
+				hoverClass: '.hover',
+				over: function(event, ui) {
+					ui.draggable.animate({
+    				width: '30',
+    				height: '30'
+  				}, 100, function() {});
+					ui.draggable.find('span.actions').hide();
+				},
+				tolerance: 'pointer',
+				out: function(event, ui) {
+					ui.draggable.animate({
+						width: '637',
+    				height: '35'
+  				}, 100, function() {});
+					ui.draggable.find('span.actions').show();
+				},
+				drop: function(event, ui) {
+					var gallery_id = 'group_<%= @group.id %>'
+					if(gallery_id !== $(this).attr('id')){
+						ui.draggable.hide();
+						$.ajax({
+            	type: 'post',
+            	data: 'group_id='+$(this).attr('id')+'&user_id='+ui.draggable.attr('id'),
+            	dataType: 'script',
+            	url: '<%= drop_user_path %>'
+						})
+						
+					}
+				}
+			});
+		});
+	</script>
+	<% end %>
 <% end %>

@@ -1,83 +1,76 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.xml
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
-  end
-
-  # GET /users/1
-  # GET /users/1.xml
-  def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.xml
-  def new
+  def new     
     @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
+    @user.group_id = params[:group_id]
+    render 'form'
+  end
+  def edit    
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      if @user.group.client_id == session[:client_id]
+        render 'form'
+      else
+        redirect_to groups_url, :notice => 'You are not allowed to edit that user.' 
+      end
+    else
+      redirect_to groups_url, :notice => 'That user does not exist.'
     end
   end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  # POST /users
-  # POST /users.xml
-  def create
+  def create  
     @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+    if @user.save
+      flash[:notice] = 'User was successfully created.'
+      if params[:continue] == nil
+        redirect_to @user.group
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        render 'form'
       end
+    else
+      render 'form'
     end
   end
-
-  # PUT /users/1
-  # PUT /users/1.xml
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
+  def update  
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      if @user.group.client_id == session[:client_id]
+        if @user.update_attributes(params[:user])
+          flash[:notice] = 'User was successfully updated.'
+          if params[:continue] == nil
+            redirect_to group_path(@user.group_id)
+          else
+            render 'form'
+          end
+        else
+          render 'form'
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        redirect_to groups_url, :notice => 'You are not allowed to update that user.'
       end
+    else
+      redirect_to groups_url, :notice => 'That user does not exist.'
     end
   end
-
-  # DELETE /users/1
-  # DELETE /users/1.xml
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+  def destroy 
+    id = params[:id].split('_').last 
+    if User.exists?(id)
+      @user = User.find(id)
+      if @user.group.client_id == session[:client_id]
+        @user.destroy
+      end
     end
+    render :nothing => true
+  end
+  def drop    
+    group_id = params[:group_id].split('_').last
+    user_id = params[:user_id].split('_').last
+    if Group.exists?(group_id) && User.exists?(user_id)
+      group = Group.find(group_id )
+      if group.client_id == session[:client_id]
+        user = User.find(user_id)
+        user.group_id = group_id
+        user.save
+      end
+    end
+    render :nothing => true
   end
 end

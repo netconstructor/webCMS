@@ -2,6 +2,7 @@
 	<%= item f, :text_field, 	:title 				%>
 	<%= item f, :check_box,		:admin 	%>
 	<div id='pages' class="<%= 'hide' if @group.admin == true %>">
+		<strong>groups</strong><br/>
 		<% for page in Page.find(:all, :conditions => {:parent_id => nil, :client_id => session[:client_id]}) %>
 			<%= check_box_tag :page_ids, page.id, @group.pages.include?(page), :name => 'group[page_ids][]' %>
     	<%= page.title %><br/>

@@ -12,3 +12,36 @@
 		</span>
 	</li>
 <% end %>
+
+<div id='users' class='records'>
+	<ul class="clearfix">
+		<% for user in @group.users %>
+		<li id='user_<%= user.id %>' class='clearfix record on'>
+			<span class='title'>
+				<%= user.username %> <span class="preview">&nbsp;</span>
+			</span>
+
+			<span class='actions'>
+				<%= link_to_edit 	 user %>
+			</span>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    // Sorting the list
+    $(document).ready(function(){
+      $('#users ul li').draggable({ 
+				revert: true,
+				revertDuration: 400,
+				refreshPositions: true,
+				connectWith: 'li.group',
+				cursorAt: { 
+        	top: 15, 
+        	left: 15 
+        }
+			});
+    });
+  </script>
+<% end %>

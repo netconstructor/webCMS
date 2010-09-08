@@ -19,9 +19,9 @@
 	</li>
 <% end %>
 <% if @gallery != nil %>
-<% content_for :javascript do %>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function(){
+	<% content_for :javascript do %>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
 			$("li#destroy_image").droppable({ 
 				hoverClass: '.hover',
 				over: function(event, ui) {
@@ -47,9 +47,9 @@
 				}
 			});
 		});
-	</script>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function(){
+		</script>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
 			$("li.gallery").droppable({ 
 				hoverClass: '.hover',
 				over: function(event, ui) {
@@ -83,6 +83,6 @@
 				}
 			});
 		});
-	</script>
-<% end %>
+		</script>
+	<% end %>
 <% end %>

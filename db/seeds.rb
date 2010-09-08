@@ -1,1 +1,3 @@
-clients = Client.create([{ :name => 'example', :domain => 'example.com' }, { :name => 'test', :domain => 'test.com' }])
+client = Client.create({ :name => 'admin', :domain => $domain })
+group  = client.groups.create({:title => 'administrators', :admin => true})
+user   = group.users.create({:username => 'demo', :password => 'demo'})

@@ -1,12 +1,16 @@
 WebCMS::Application.routes.draw do
-  
-  resources :groups
+  match '/login'     => "websites#login"
+  match '/logout'    => "websites#logout"
+  match '/public/*path.:format' => "websites#public"
+  resources :groups do
+    resources :users
+  end
+  resources :users do
+    post :drop,     :on => :member
+    post :destroy,  :on => :member
+  end
 
-  resources :users
-
-  match "/dialogs/:name" => 'dialogs#show'
   resources :videos
-
   resources :articles
 
   resources :items do
@@ -14,23 +18,22 @@ WebCMS::Application.routes.draw do
   end
 
   resources :parts
-
   resources :pages do
     post :move, :on => :collection
   end
-  match "/images/insert" => 'images#insert'
+  
   resources :images do
     post  :sort,    :on => :collection
     post  :drop,    :on => :member 
     post  :destroy, :on => :member 
   end
-
-  resources :galleries
+  resources :galleries do
+    resources :images
+  end
 
   resources :domains
-
   resources :clients do
     get :change, :on => :member 
   end
-  root :to => 'clients#index'
+  root :to => 'websites#index'
 end

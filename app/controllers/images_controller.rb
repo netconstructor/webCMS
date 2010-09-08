@@ -49,8 +49,8 @@ class ImagesController < ApplicationController
     render :nothing => true
   end
   def drop    
-    puts gallery_id = params[:gallery_id].split('_').last
-    puts image_id = params[:image_id].split('_').last
+    gallery_id = params[:gallery_id].split('_').last
+    image_id = params[:image_id].split('_').last
     if Gallery.exists?(gallery_id) && Image.exists?(image_id)
       gallery = Gallery.find(gallery_id )
       if gallery.client_id == session[:client_id]

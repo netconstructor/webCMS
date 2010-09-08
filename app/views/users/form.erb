@@ -1,0 +1,15 @@
+<%= form_for  @user do |f| %>
+	<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li class='flash_notice'><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= item f, :hidden_field, 		:group_id 	%>
+	<%= item f, :text_field, 			:username 	%>
+	<%= item f, :password_field, 	:password 	%>
+	<%= buttons f, :groups, ['update', 'updateEdit', 'cancel'] %>
+<% end %>
