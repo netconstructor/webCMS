@@ -40,10 +40,25 @@ What is possible at the moment:
 - add, remove, edit users.
 	Users can be dragged into groups.
 	Users can be deleted by drag and drop.
-
-TO DO ------ 
-	- Add Plugin and Theme and control (what client has access to which plugins and themes)
 	
+- add, remove, edit youtube movies by giving the url of a youtube clip
+	
+- add and remove plugins for each clients. 
+	Possible to create a "settings.yml" file and specify which plugins
+	a client can use (also in which order)
+	
+- add and remove features for each client
+	Possible to create a "settings.yml" file and specify which features a client can
+	access, based on the plugins a client can use.
+	
+	
+TO DO ------ 
+	- Update the Article plugin for adding, editting Links
+	- Update the Article plugin for adding, editting images
+	- Add, remove, edit "assets" (files)
+	- Keep track of user statistics and display them
+	- Create dynamic forms
+
 This CMS has the MIT license (please see license.md). And is free to be used for any purpose. 
 The software is provided "as is" and there is NO guaranty that it is save, useful or whatever.
 
