@@ -22,7 +22,6 @@ class PagesController < ApplicationController
     if Page.exists?(params[:id])
       @page = Page.find(params[:id])
       if @page.client_id == session[:client_id]
-        @parts = Part.find_all_by_client_id(session[:client_id])
         render 'form'
       else
         redirect_to pages_url, :notice => 'You are not allowed to edit that page.'
@@ -44,6 +43,7 @@ class PagesController < ApplicationController
     end
   end
   def update  
+    params[:page][:group_ids] ||= []
     if Page.exists?(params[:id])
       @page = Page.find(params[:id])
       if @page.client_id == session[:client_id]
@@ -89,6 +89,9 @@ class PagesController < ApplicationController
           @page.save
           @page.reload
           @page.insert_at position+1
+        end
+        if @page.parent_id != nil
+          @page.groups.clear
         end
         @page.save
       end

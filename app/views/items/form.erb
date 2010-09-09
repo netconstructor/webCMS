@@ -5,6 +5,14 @@
 				<%= hidden_field :item, :page_id %>
 				<%= hidden_field :item, :part_id %>
 				<%= item f, :text_field, 	:title %>
+				<% if $settings['features'][@item.link_type.downcase.pluralize].count > 1 %>
+					<div class='field'>
+						<%= f.label 'feature' %>
+						<%= f.select :feature, $settings['features'][@item.link_type.downcase.pluralize].collect{|p| [p, p]} %><br/>
+					</div>
+				<% else %>
+					<%= hidden_field :item, :feature, :value => $settings['features'][@item.link_type.downcase.pluralize].first %>
+				<% end %>
 				<%= render :partial => "items/forms/#{@item.link_type.downcase}", :locals => {:f => f, :item => @item} %>
 				<%= buttons f, :pages, ['update', 'updateEdit', 'cancel'] %>
 			</div>

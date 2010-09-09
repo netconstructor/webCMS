@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
 
     def load_config       
-      url = "websites/#{session[:client_id].to_s}/config.yml"
+      url = "websites/#{session[:client_id].to_s}/settings.yml"
       if FileTest.exists?(url)
         $settings = YAML.load_file(url)
       else

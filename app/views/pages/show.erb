@@ -1,8 +1,8 @@
 <% content_for :actions do %>
 	<% @parts.each do |part| %>
-		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Article', :type => 'article', :page => @page, :first => @parts.first.id} %>
-		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Gallery', :type => 'gallery', :page => @page, :first => @parts.first.id} %>
-		<%= render :partial => 'action', :locals => {:part => part, :name => 'Add Video', 	:type => 'video', 	:page => @page, :first => @parts.first.id} %>
+		<% $settings['features'].each do |key, value| %>
+			<%= render :partial => 'action', :locals => {:part => part, :name => "Add #{key.singularize.capitalize}", :type => key.singularize.downcase, :page => @page, :first => @parts.first.id} %>
+		<% end %>
 	<% end %>
 <% end %>
 <% content_for :records do %>

@@ -1,8 +1,10 @@
 <%= form_for  @page do |f| %>
 	<%= item f, :text_field, 	:title %>
-	<% for group in Group.find(:all, :conditions => {:admin => false, :client_id => session[:client_id]}) %>
-		<%= check_box_tag :group_ids, group.id, @page.groups.include?(group), :name => 'page[group_ids][]' %>
-		<%= group.title %><br/>
+	<% if @page.parent_id == nil %>
+		<% for group in Group.find(:all, :conditions => {:admin => false, :client_id => session[:client_id]}) %>
+			<%= check_box_tag :group_ids, group.id, @page.groups.include?(group), :name => 'page[group_ids][]' %>
+			<%= group.title %><br/>
+		<% end %>
 	<% end %>
 	
 	<%= buttons f, :pages, ['update', 'updateEdit', 'cancel', 'delete'], @page %>

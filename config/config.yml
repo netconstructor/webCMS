@@ -1,3 +1,4 @@
+#config
 plugins:
   clients:    ['clients', 'parts']
   galleries:  ['galleries', 'images']

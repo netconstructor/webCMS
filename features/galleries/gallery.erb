@@ -1,0 +1,25 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 		'websites/features/galleries/gallery' 		%>
+	<%= javascript_include_tag 	'websites/features/galleries/gallerie' 		%>
+ 	<script type="text/javascript" charset="utf-8">
+ 		$(document).ready(function(){
+				$('#gallery_<%= item.id %> a').lightBox({
+					imageLoading: 	'/images/websites/loading.gif',
+					imageBtnClose: 	'/images/websites/close.gif',
+					imageBtnPrev: 	'/images/websites/prev.gif',
+					imageBtnNext: 	'/images/websites/next.gif',
+					imageBlank: 		'/images/websites/blank.gif',
+					containerResizeSpeed: 350
+				});
+		});
+	</script>
+<% end %>
+<div class='gallery' id='gallery_<%= item.id %>'>
+	<ul>
+		<% item.images.each do |image| %>
+			<li id='image_<%= image.id %>'>
+				<%= link_to image_tag(image.data.url(:tsquare), :border=>0), image.data.url(:large) %>
+			</li>
+		<% end %>
+	</ul>
+</div>

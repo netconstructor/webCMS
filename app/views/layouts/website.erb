@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+		<%= csrf_meta_tag -%>
 		<%= stylesheet_link_tag 		'/public/index' 		%>
+		<%= stylesheet_link_tag 		'websites/login'    %>
 		<%= javascript_include_tag 	'jquery/jquery-min' %>
+		<%= javascript_include_tag 	'websites/login' 		%>
 		<%= javascript_include_tag 	'/public/index' 		%>
+
+		<%= yield :head %>
 	</head>
   <body>
-		woohoo... website.erb layout <br/>
-		<%= yield %>
+		<%= yield -%>
+		<%= render :partial => 'login'%>
   </body>
 </html>

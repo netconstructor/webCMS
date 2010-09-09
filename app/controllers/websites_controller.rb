@@ -1,8 +1,44 @@
 class WebsitesController < ApplicationController
-  skip_before_filter :authorize_user, :load_config, :authorize_plugin
+  skip_before_filter :authorize_user, :authorize_plugin
   layout false
   
   def index   
+    if session[:user_id] != nil
+      @user = User.find(session[:user_id])
+      if @user.group.admin == true
+        @pages = Page.find(:all, :conditions => {:client_id => session[:client_id], :parent_id => nil})
+      else
+        @pages = Page.all(:include => :groups, :conditions => ["(#{Group.table_name}.id IS NULL OR #{Group.table_name}.id IS #{@user.group_id}) AND #{Page.table_name}.client_id='#{session[:client_id]}' AND #{Page.table_name}.parent_id IS NULL"])
+      end
+    else
+      @pages = Page.all(:include => :groups, :conditions => ["#{Group.table_name}.id IS NULL AND #{Page.table_name}.client_id='#{session[:client_id]}' AND #{Page.table_name}.parent_id IS NULL"])
+    end
+    if params[:id] == nil
+      @page = @pages.first
+    else
+      @page = Page.find(params[:id]) if Page.exists?(params[:id])
+      if @page == nil || @page.client_id != session[:client_id]
+        return redirect_to root_url
+      end
+    end
+    
+    #define path
+    @path = Array.new
+    @path << @page.id
+    page = @page
+    until page.parent_id == nil
+      page = Page.find(page.parent_id)
+      @path << page.id
+    end    
+    #check if that page is authorized
+    p = Page.find(@path.last)
+    if p.groups.count != 0 && (@user == nil || (@user.group.admin == false && !p.groups.exists?(@user.group_id)))
+      return redirect_to root_url
+    end
+    
+    #Reverse that shit!
+    @path = @path.reverse
+    
     url = "websites/#{session[:client_id].to_s}/index.erb"
     if FileTest.exists?(url)
       render :layout => 'website', :file => url

@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :position
       t.integer :link_id
       t.string  :link_type
+      t.string  :feature
       t.string  :title
       t.timestamps
     end

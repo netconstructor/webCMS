@@ -35,5 +35,6 @@ WebCMS::Application.routes.draw do
   resources :clients do
     get :change, :on => :member 
   end
+  match '/:id(/*path)' => "websites#index"
   root :to => 'websites#index'
 end

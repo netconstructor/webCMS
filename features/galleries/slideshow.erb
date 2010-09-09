@@ -1,0 +1,18 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 		'websites/features/galleries/slideshow' 		%>
+	<%= javascript_include_tag 	'websites/features/galleries/slideshow' 		%>
+ 	<script type="text/javascript" charset="utf-8">
+ 		$(document).ready(function(){
+			slideShow(4000);
+		});
+	</script>
+<% end %>
+<div class='slideshow' id='gallery_<%= item.id %>'>
+	<ul class='slideshow'>
+		<% item.images.each do |image| %>
+			<li id='image_<%= image.id %>'>
+				<%= image_tag image.data.url(:slideshow), :border=>0, :title => image.data_file_name, :alt => '' %>
+			</li>
+		<% end %>
+	</ul>
+</div>

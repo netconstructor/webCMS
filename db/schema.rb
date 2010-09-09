@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20100907095019) do
     t.integer  "position"
     t.integer  "link_id"
     t.string   "link_type"
+    t.string   "feature"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20100907095019) do
   end
 
   create_table "videos", :force => true do |t|
-    t.string   "code"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
