@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authorize_user
   before_filter :load_config
   before_filter :authorize_plugin
+
   private
     def authorize_website 
       puts "authorizing website"

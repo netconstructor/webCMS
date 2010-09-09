@@ -1,38 +1,28 @@
 <head>
   <title>Rails 3</title>
-  <%= stylesheet_link_tag 'refinery', 'site_bar', 'tooltips', 'ui', 'formatting', 'home', 'upload' -%>
-
-	<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
-  	<script type='text/javascript'>
-    	<%= render :partial => '/shared/html5_for_ie.js' %>
-		</script>
-	<% end %>
-
-	<%# javascript_include_tag 	'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
-	<%= javascript_include_tag 	'jquery/jquery-min' %>
-	<%= javascript_include_tag 	'jquery-ui-custom-min.js',
+  <%= stylesheet_link_tag 'refinery', 'site_bar', 'tooltips', 'ui', 'formatting', 'home', 'upload' -%>	
+	<%= javascript_include_tag 	'jquery/jquery-min',
+															'jquery/jquery-ui-custom-min',
+														 	'jquery/jquery.corner',
+                             	'jquery/jquery.textTruncate',
+                             	'jquery/jquery.html5-placeholder-shim',
+                             	'jquery/jquery.timers',
+                             	'jquery/jquery.jcarousel',
+															'jquery/jquery.nestedsortables',
+															'jquery/jquery.cookie',
+															'jquery/jquery.hotkeys',
+															'jquery/jquery.jstree',
 															'html5_for_ie',
-														 	'jquery/jquery.corner.js',
-                             	'jquery/jquery.textTruncate.js',
-                             	'jquery/jquery.html5-placeholder-shim.js',
-                             	'jquery/jquery.timers.js',
-                             	'jquery/jquery.jcarousel.js',
-															'jquery/jquery.nestedsortables.js',
-															'jquery/jquery.cookie.js',
-															'jquery/jquery.hotkeys.js',
-															'jquery/jquery.jstree.js',
-														 	'i18n.js',
-															'wymeditor/jquery.refinery.wymeditor.js',
 															'admin',
 															'application',
-															'boot_wym',
 															'rails'
 	%>
-	<%= javascript_include_tag 	'upload/fileprogress.js',
-															'upload/handlers.js',
-															'upload/swfupload.queue.js',
-															'upload/swfupload.js'
+	<%= javascript_include_tag 	'swfupload/upload/fileprogress',
+															'swfupload/upload/handlers',
+															'swfupload/upload/swfupload.queue',
+															'swfupload/upload/swfupload'
   %>
+	<%= javascript_include_tag :ckeditor %>
 	<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
     <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'ie-less-than-8'}<![endif]-->".html_safe  %>
     <%= "<!--[if IE 8]>#{stylesheet_link_tag 'ie-less-than-9'}<![endif]-->".html_safe  %>

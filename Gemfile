@@ -12,7 +12,7 @@ gem 'rubyzip'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'acts_as_tree'
-gem 'cancan'
+gem 'ckeditor', '3.4.0.pre'
 
 # Use unicorn as the web server
 # gem 'unicorn'
