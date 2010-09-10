@@ -15,4 +15,5 @@ end
 
 group :production do  
   gem 'unicorn'
+  gem 'mysql', '2.8.1'
 end
