@@ -33,15 +33,29 @@ GEM
     arel (0.4.0)
       activesupport (>= 3.0.0.beta)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     ckeditor (3.4.0.pre)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    highline (1.6.1)
     i18n (0.4.1)
     mail (2.2.5)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    net-scp (1.0.3)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     paperclip (2.3.3)
       activerecord
       activesupport
@@ -78,6 +92,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   acts_as_tree
+  capistrano
   ckeditor (= 3.4.0.pre)
   paperclip
   rails (= 3.0.0.rc)
