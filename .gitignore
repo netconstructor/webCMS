@@ -2,7 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-websites/
+public/system/*
+/websites/
 public/assets/
 Capfile
 config/deploy.rb

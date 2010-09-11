@@ -1,0 +1,16 @@
+<% if admin? %>
+	<div class='cms'>
+		<a id='cms' href="/<%= $settings['plugins'].first %>" />
+		<a id='uitloggen' href='/logout' />
+	</div>
+<% else %>
+	<div id='window' class='transparent'></div>
+	<div id='windowLogin' class='full'>
+	<div id ='x'></div>
+		<% form_tag :action => 'login' do %>
+    	<%= text_field 			:login, :username, :value => 'Username', :onclick =>"this.value='';" %>
+    	<%= password_field 	:login, :password, :value => 'Password', :onclick =>"this.value='';" %>
+			<%= submit_tag 			:login %>
+		<% end %>
+	</div>
+<% end %>
