@@ -3,8 +3,8 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 public/system/*
-/websites/
-public/assets/
+/websites
+public/assets
 Capfile
 config/deploy.rb
 config/database-production.yml
