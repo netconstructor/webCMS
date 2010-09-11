@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       puts "authorizing website"
       c = Client.find_by_domain(request.host)
       if c == nil
-        render :status => 404
+        render :inline => '404 - client not found'
       elsif session[:client_id] == nil || (session[:client_id] != c.id && session[:admin] == nil)
         session[:client_id] = c.id
       end
