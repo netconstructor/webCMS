@@ -4,4 +4,3 @@ plugins:
   galleries:  ['galleries', 'images']
   pages:      ['pages', 'items']
   groups:     ['groups', 'users']
-domain:   'localhost'

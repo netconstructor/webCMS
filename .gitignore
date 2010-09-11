@@ -6,4 +6,4 @@ websites/
 public/assets/
 Capfile
 config/deploy.rb
-config/database.yml
+config/database-production.yml

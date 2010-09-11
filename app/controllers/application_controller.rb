@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
     def authorize_website 
       puts "authorizing website"
-      c = Client.find_by_domain(request.domain)
+      c = Client.find_by_domain(request.host)
       if c == nil
         render :status => 404
       elsif session[:client_id] == nil || (session[:client_id] != c.id && session[:admin] == nil)
@@ -44,6 +44,9 @@ class ApplicationController < ActionController::Base
           puts key
           i=true if $settings['plugins'].include?(key)
         end
+      end
+      if params[:controller] == 'clients' && session[:admin] == true
+        i= true
       end
       if i == false
         redirect_to root_url

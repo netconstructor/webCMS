@@ -1,5 +1,5 @@
 puts "#-- creating client"
-client = Client.create({ :name => 'admin', :domain => $config['domain'], :active => true })
+client = Client.create({ :name => 'admin', :domain => 'localhost', :active => true })
 puts "#-- creating part"
 part   = client.parts.create({:name => 'body'})
 puts "#-- creating administrator group"
