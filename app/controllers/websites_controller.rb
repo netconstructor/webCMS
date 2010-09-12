@@ -47,7 +47,7 @@ class WebsitesController < ApplicationController
     end
   end
   def public  
-    url = "websites/#{session[:client_id].to_s}/#{params[:path]}.#{params[:format]}"
+    url = "websites/public/#{session[:client_id].to_s}/#{params[:path]}.#{params[:format]}"
     if FileTest.exists?(url)
       respond_to do |format|
         format.js  { render :file => url }

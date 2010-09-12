@@ -5,9 +5,18 @@ class Client < ActiveRecord::Base
   has_many :groups,     :dependent => :delete_all
   accepts_nested_attributes_for :parts, :allow_destroy => true
   
-  after_save    :set_upload
-  after_destroy :remove_upload
+  after_save     :set_upload
+  after_destroy  :remove_upload
+  after_commit   :set_directory
 
+  def set_directory 
+    directory = 'links'
+    FileUtils.rm_rf(directory) if  FileTest.exists?(directory)
+    Dir.mkdir(directory)
+    Client.all.each do |client|
+      FileUtils.ln_s "websites/#{client.id}", "links/#{client.domain}"
+    end
+  end
   def set_upload    
     if $file != nil
       require 'rubygems'

@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 public/system/*
 /websites
+/links
 public/assets
 Capfile
 config/deploy.rb
