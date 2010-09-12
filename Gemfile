@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0'
 gem 'rubyzip'
 gem 'paperclip'
 gem 'acts_as_list'
@@ -10,8 +10,6 @@ gem 'capistrano'
 group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
-
-
 group :production do
-  gem 'mysql'
+  gem 'ruby-mysql'
 end

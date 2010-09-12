@@ -7,5 +7,4 @@ public/system/*
 public/assets
 Capfile
 config/deploy.rb
-config/database-production.yml
 /RAILS_ENV=development
