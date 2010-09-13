@@ -41,7 +41,6 @@ class ApplicationController < ActionController::Base
       i = false
       $config['plugins'].each do |key, value|
         if value.include?(params[:controller])
-          puts key
           i=true if $settings['plugins'].include?(key)
         end
       end

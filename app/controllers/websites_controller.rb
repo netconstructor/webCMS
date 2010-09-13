@@ -47,7 +47,7 @@ class WebsitesController < ApplicationController
     end
   end
   def public  
-    url = "websites/public/#{session[:client_id].to_s}/#{params[:path]}.#{params[:format]}"
+    url = "websites/#{session[:client_id].to_s}/public/#{params[:path]}.#{params[:format]}"
     if FileTest.exists?(url)
       respond_to do |format|
         format.js  { render :file => url }
@@ -63,13 +63,13 @@ class WebsitesController < ApplicationController
     if params[:login] != nil
       users = User.find(:all, :conditions => {:username => params[:login][:username], :password => params[:login][:password]})
       user = nil
-      puts session[:client_id]
       users.each do |u|
         if u.group.client_id == session[:client_id]
           user = u
         end
       end
       if user != nil
+        session[:admin] = true if $settings['plugins'].include?('clients')
         session[:user_id] = user.id
         redirect_to root_url
       else
