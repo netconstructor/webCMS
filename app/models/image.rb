@@ -12,5 +12,5 @@ class Image < ActiveRecord::Base
                     :url =>                    '/assets/photos/:id/:style.:extension'
 
   validates_attachment_presence     :data
-  validates_attachment_size         :data, :less_than => 5.megabytes
+  validates_attachment_size         :data, :less_than => 10.megabytes
 end
