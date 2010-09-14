@@ -14,7 +14,7 @@ class Client < ActiveRecord::Base
     FileUtils.rm_rf(directory) if  FileTest.exists?(directory)
     Dir.mkdir(directory)
     Client.all.each do |client|
-      FileUtils.ln_s "websites/#{client.id}", "links/#{client.domain}"
+      FileUtils.ln_s "#{Rails.root.to_s}/websites/#{client.id}", "#{Rails.root.to_s}/links/#{client.domain}"
     end
   end
   def set_upload    
