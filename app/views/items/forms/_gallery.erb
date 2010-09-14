@@ -1,7 +1,7 @@
 <%= hidden_field :item, :link_type %>
 <div class='field'>
 	<%= f.label 'gallery' %>
-	<%= f.select :link_id, Gallery.all.collect{|p| [p.title, p.id]}%>
+	<%= f.select :link_id, Gallery.find_all_by_client_id(session[:client_id]).collect{|p| [p.title, p.id]}%>
 </div>
 
 <ul id="image_grid" class="clearfix">
