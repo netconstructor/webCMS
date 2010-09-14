@@ -102,12 +102,9 @@
 }
 .gallery ul li { display: inline; }
 .gallery ul img {
-	border: 5px solid white;
-	border-width: 5px 5px 20px;
+	margin: 5px 5px 20px;
 }
 .gallery ul a:hover img {
-	border: 5px solid #fff;
-	border-width: 5px 5px 20px;
 	color: #fff;
 }
 .gallery ul a:hover { color: #fff; }
