@@ -1,3 +1,4 @@
-<% @page.items.each do |item| %>
+<% part_id = Part.find(:first, :conditions=>{:client_id => session[:client_id], :name => part}).id %>
+<% @page.items.find_all_by_part_id(part_id).each do |item| %>
 	<%= render_content(item) %>
 <% end %>

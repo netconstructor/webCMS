@@ -23,4 +23,12 @@ module ApplicationHelper
   def buttons (f, controller, buttons, item = nil)
     render :partial => 'shared/form/buttons', :locals => {:f => f, :controller => controller, :buttons => buttons, :item => item}
   end
+  def contains?(part)
+    i = Part.find(:first, :conditions => {:name => part})
+    if i != nil && @page.items.find_by_part_id(i.id) != nil
+      return true
+    else
+      return false
+    end
+  end
 end
