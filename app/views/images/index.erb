@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <%= render :partial => "/shared/head" %>
-  <body>
+	<script>
+   function changeScreenSize(w,h)
+     {
+       window.resizeTo( w,h )
+     }
+	</script>
+  <body onload="changeScreenSize(1200,600)">
     <div id='tooltip_container'></div>
-		<div id="page_container">
+		<div id="page_container" >
 			<div id="page">
 				<div id='actions'>
   				<ul>

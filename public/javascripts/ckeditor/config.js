@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config )
 
   //config.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbox','Radio','TextField','HiddenField','ImageButton','Button','BulletedList','NumberedList','Table','Form'] ; 
   
-
+	config.filebrowserImageWindowHeight = '600, scrollbars=yes';
   
   //config.resize_enabled = false;
   //config.resize_maxHeight = 2000;
