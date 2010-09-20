@@ -42,10 +42,10 @@ if Object.const_defined?("Ckeditor")
     #config.file_manager_upload_uri = "/ckeditor/create/file"
     
     # Path for view all uploaded images
-    #config.file_manager_image_uri = "/ckeditor/images"
+    config.file_manager_image_uri = "/images"
     
     # Path for upload images process
-    #config.file_manager_image_upload_uri = "/ckeditor/create/image"
+    #config.file_manager_image_upload = false
    
     # Model's names witch processing in ckeditor_controller
     #config.file_manager_image_model = "Ckeditor::Picture"

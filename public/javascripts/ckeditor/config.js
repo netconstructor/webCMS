@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function( config )
   config.PreserveSessionOnFileBrowser = true;
   // Define changes to default configuration here. For example:
   config.language = 'en';
-  // config.uiColor = '#AADC6E';
+  config.uiColor = '#41403C';
 
   //config.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbox','Radio','TextField','HiddenField','ImageButton','Button','BulletedList','NumberedList','Table','Form'] ; 
   
@@ -21,11 +21,14 @@ CKEDITOR.editorConfig = function( config )
   //config.startupFocus = true;
   
   // works only with en, ru, uk languages
-  config.extraPlugins = "embed,attachment";
+//	var dialogName = config.data.name;
+//	var dialogDefinition = config.data.definition;
+
+	
+  config.extraPlugins = "";
   config.resize_enabled = false;
 	config.toolbarCanCollapse = false;
   config.toolbar = 'Easy';
-  
   config.toolbar_Easy =
     [
         ['PasteFromWord','Maximize', 'Undo','Redo', 'Format'],
@@ -33,8 +36,7 @@ CKEDITOR.editorConfig = function( config )
         ['NumberedList','BulletedList','-','Outdent','Indent'],
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
         ['Link','Unlink'],
-				['Table','HorizontalRule','SpecialChar']
-				// ['Image', 'Attachment', ]
+				['Table','HorizontalRule','SpecialChar'],
+				['Image', 'Attachment' ]
     ];
 };
-

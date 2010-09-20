@@ -1,3 +1,26 @@
 <%= f.fields_for item.link do |a| %>
 	<%= a.cktext_area :body, :toolbar=>'Easy', :width=>'100%', :height=>'500px' %>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+	CKEDITOR.on('dialogDefinition', function( ev )
+{
+	var dialogName = ev.data.name;  
+	var dialogDefinition = ev.data.definition;
+  if ( dialogName == 'link' )
+	{
+		dialogDefinition.removeContents( 'advanced' );
+		dialogDefinition.removeContents( 'target' );
+		dialogDefinition.removeContents( 'upload' );
+	}
+	if ( dialogName == 'image' )
+	{
+		dialogDefinition.removeContents( 'advanced' );
+		dialogDefinition.removeContents( 'Link' );
+		dialogDefinition.removeContents( 'Upload' );
+	}
+	if ( dialogName == 'table' )
+	{
+		dialogDefinition.removeContents( 'advanced' );
+	}
+});
+</script>

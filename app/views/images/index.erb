@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <%= render :partial => "/shared/head" %>
+  <body>
+    <div id='tooltip_container'></div>
+		<div id="page_container">
+			<div id="page">
+				<div id='actions'>
+  				<ul>
+						<% @galleries.each do |gallery| %>
+							<li id='gallery_<%= gallery.id %>'>
+								<%= link_to_function gallery.title, "showImages('#{gallery.id}');", :class => 'img_icon' %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+				<div id="content" class="clearfix">
+					<ul id="image_grid" class="clearfix">
+						<% @galleries.each do |gallery| %>
+							<% gallery.images.each do |image| %>
+								<li id='image_<%= image.id %>' class='gallery_<%= image.gallery_id %>' onclick="selectImage('/assets/photos/<%= image.id %>/');" style="<%= 'display: none;' if image.gallery_id != @galleries.first.id %>">
+									<%= image_tag image.data.url(:small) %>
+								</li>
+							<% end %>
+						<% end %>
+					</ul>
+					<ul id='size'>
+						<li id='small' class='selected'>
+							<a tooltip="small image (150x150)" title="" data-size="110x110&gt;" onclick="changeSize('small')">small</a>
+						</li>
+						<li id='slideshow'>
+							<a tooltip="medium image (500x250)" title="" data-size="225x255&gt;" onclick="changeSize('slideshow')">medium</a>
+						</li>
+						<li id='large'>
+							<a tooltip="large image (800x600)" title="" data-size="450x450&gt;" onclick="changeSize('large')">large</a>
+						</li>
+					</ul>
+					<script type="text/javascript" charset="utf-8">
+						var size = 'small.jpg';
+						function showImages(id){
+							id = 'gallery_'+id;
+							$('ul#image_grid li').each(function(){
+								$(this).hide();
+							});
+							$('ul#image_grid li.'+id).each(function(){
+								$(this).show();
+							})
+						}
+						function changeSize(newSize){
+							size = newSize+'.jpg';
+							$("ul#size li").each(function () {
+  							id = $(this).removeClass('selected');
+							});
+							$('ul#size li#'+newSize).addClass('selected');
+						}
+						function getUrlParam(paramName){
+  						var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+  						var match = window.location.search.match(reParam);
+  						return (match && match.length > 1) ? match[1] : '' ;
+						}
+						function selectImage(fileUrl){
+							fileUrl = fileUrl+size;
+							var funcNum = getUrlParam('CKEditorFuncNum');
+							window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+							window.close();
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>

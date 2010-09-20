@@ -1,3 +1,51 @@
+#size {
+	color:#41403C;
+	font-family:Arial;
+	font-size:13px;
+	margin:0;
+	padding:10px 0 0;
+}
+#size li{
+	float:left;
+	list-style:none outside none;
+	margin:0 18px 0 0;
+	text-align:center;
+}
+#size li a{
+	border:1px solid #999999;
+	display:block;
+	font-size:10px;
+	height:30px;
+	line-height:30px;
+	margin-top:10px;
+	width:30px;
+}
+#size li.selected a{
+	background:none repeat scroll 0 0 #22A7F2;
+	border-color:#22A7F2;
+	color:white;
+	font-weight:bold;
+}
+#size li#small a{
+	height:30px;
+	line-height:30px;
+	margin-top:10px;
+	width:30px;
+}
+#size li#slideshow a{
+	height:50px;
+	line-height:50px;
+	margin-top:0;
+	width:50px;
+}
+#size li#large a{
+	height:70px;
+	line-height:70px;
+	margin-top:-10px;
+	width:70px;
+}
+
+
 /* Default error colouring */
 
 article, nav, header, footer, aside, hgroup, section{

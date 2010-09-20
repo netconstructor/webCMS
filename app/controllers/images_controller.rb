@@ -1,4 +1,8 @@
 class ImagesController < ApplicationController
+  def index
+    @galleries = Gallery.find_all_by_client_id(session[:client_id])
+    render :layout => false
+  end
   def new     
     if Gallery.exists?(params[:gallery_id])
       @gallery = Gallery.find(params[:gallery_id])
