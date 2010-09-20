@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  def index
+  def index   
     @galleries = Gallery.find_all_by_client_id(session[:client_id])
     render :layout => false
   end

@@ -1,28 +1,28 @@
 <% content_for :actions do %>
 	<% if params[:id] != nil %>
 		<li>
-			<%= link_to 'New Image', new_image_path(:gallery_id => params[:id]), :class => 'add_icon' %>
+			<%= link_to 'New file', new_asset_path(:folder_id => params[:id]), :class => 'add_icon' %>
 		</li>
-		<li id='destroy_image'>
+		<li id='destroy_asset'>
 			<%= link_to 'Drop to delete Image', '#', :class => 'delete_icon', :title => "Drop image to delete it." %>
 		</li>
 		<br/>
 	<% end %>
-	<% @galleries.each do |gallery| %>
-		<li id='gallery_<%= gallery.id %>' class='<%= 'gallery' if @gallery != nil && gallery.id != @gallery.id %>'>
-			<%= link_to gallery.title, gallery, :class => 'img_icon' %>
+	<% @folders.each do |folder| %>
+		<li id='folder_<%= folder.id %>' class='<%= 'folder' if @folder != nil && folder.id != @folder.id %>'>
+			<%= link_to folder.title, folder, :class => 'img_icon' %>
 		</li>
 	<% end %>
 	<br/>
 	<li>
-		<%= link_to 'New Gallery', new_gallery_path, :class => 'add_icon' %>
+		<%= link_to 'New Folder', new_folder_path, :class => 'add_icon' %>
 	</li>
 <% end %>
-<% if @gallery != nil %>
+<% if @folder != nil %>
 	<% content_for :javascript do %>
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function(){
-			$("li#destroy_image").droppable({ 
+			$("li#destroy_asset").droppable({ 
 				hoverClass: '.hover',
 				over: function(event, ui) {
 					ui.draggable.animate({
@@ -42,7 +42,7 @@
 					$.ajax({
             type: 'post',
             dataType: 'script',
-            url: '/images/'+ui.draggable.attr('id')+'?_method=DELETE'
+            url: '/assets/'+ui.draggable.attr('id')+'?_method=DELETE'
 					});
 				}
 			});
@@ -50,7 +50,7 @@
 		</script>
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function(){
-			$("li.gallery").droppable({ 
+			$("li.folder").droppable({ 
 				hoverClass: '.hover',
 				over: function(event, ui) {
 					ui.draggable.animate({
@@ -67,14 +67,14 @@
   				}, 100, function() {});
 				},
 				drop: function(event, ui) {
-					var gallery_id = 'gallery_<%= @gallery.id %>'
-					if(gallery_id !== $(this).attr('id')){
+					var folder_id = 'folder_<%= @folder.id %>'
+					if(folder_id !== $(this).attr('id')){
 						ui.draggable.hide();
 						$.ajax({
             	type: 'post',
-            	data: 'gallery_id='+$(this).attr('id')+'&image_id='+ui.draggable.attr('id'),
+            	data: 'folder_id='+$(this).attr('id')+'&asset_id='+ui.draggable.attr('id'),
             	dataType: 'script',
-            	url: '<%= drop_image_path %>'
+            	url: '<%= drop_asset_path %>'
 						})
 						
 					}

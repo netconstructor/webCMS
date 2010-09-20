@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  folder_id: 1
+  data_file_name: MyString
+  data_file_size: MyString
+  data_updated_at: MyString
+  position: 1
+
+two:
+  folder_id: 1
+  data_file_name: MyString
+  data_file_size: MyString
+  data_updated_at: MyString
+  position: 1

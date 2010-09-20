@@ -1,5 +1,6 @@
 class Client < ActiveRecord::Base
   has_many :galleries,  :dependent => :delete_all
+  has_many :folders,    :dependent => :delete_all
   has_many :pages,      :dependent => :delete_all
   has_many :parts,      :dependent => :delete_all
   has_many :groups,     :dependent => :delete_all

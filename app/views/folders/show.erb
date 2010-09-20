@@ -1,0 +1,51 @@
+<% render :partial => 'actions' %>
+
+<% content_for :records do %>
+<li class='clearfix record on'>
+	<span class='title'>
+		<%= @folder.title %> <span class="preview">&nbsp;</span>
+	</span>
+
+	<span class='actions'>
+		<%= link_to_edit 	 @folder %>
+		<%= link_to_delete @folder %>
+	</span>
+</li>
+<% end %>
+
+<div class='item records' id='assets'>
+	<ul>
+		<% @folder.assets.all.each_with_index do |asset, i| %>
+			<li id="asset_<%= asset.id %>" class='clearfix record on'>
+				<span class='title'>
+					<%= asset.data_file_name %> <span class="preview">&nbsp;</span>
+				</span>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    // Sorting the list
+    $(document).ready(function(){
+      $('#assets').sortable({
+        items: 'li',
+        opacity: 0.4,
+        scroll: true,
+				cursorAt: { 
+        	top: 15, 
+        	left: 15 
+        },
+ 				connectWith: 'li.folder',
+        update: function(){
+          $.ajax({
+            type: 'post',
+            data: $('#assets').sortable('serialize') + '&folder_id=<%= @folder.id%>',
+            dataType: 'script',
+            url: '<%= sort_assets_path %>'
+					});
+        }
+      });
+    });
+  </script>
+<% end %>

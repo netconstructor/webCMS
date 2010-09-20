@@ -23,9 +23,7 @@ CKEDITOR.editorConfig = function( config )
   // works only with en, ru, uk languages
 //	var dialogName = config.data.name;
 //	var dialogDefinition = config.data.definition;
-
-	
-  config.extraPlugins = "";
+	config.extraPlugins = "embed,attachment";
   config.resize_enabled = false;
 	config.toolbarCanCollapse = false;
   config.toolbar = 'Easy';
@@ -37,6 +35,6 @@ CKEDITOR.editorConfig = function( config )
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
         ['Link','Unlink'],
 				['Table','HorizontalRule','SpecialChar'],
-				['Image', 'Attachment' ]
+				['Image', 'Attachment']
     ];
 };

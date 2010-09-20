@@ -1,4 +1,8 @@
 WebCMS::Application.routes.draw do
+  
+
+  resources :folders
+
   match '/login'     => "websites#login"
   match '/logout'    => "websites#logout"
   match '/public/*path.:format' => "websites#public"
@@ -27,6 +31,12 @@ WebCMS::Application.routes.draw do
     post  :drop,    :on => :member 
     post  :destroy, :on => :member 
   end
+  resources :assets do
+    post  :sort,    :on => :collection
+    post  :drop,    :on => :member 
+    post  :destroy, :on => :member 
+  end
+  
   resources :galleries do
     resources :images
   end

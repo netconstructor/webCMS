@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <%= render :partial => "/shared/head" %>
+	<script>
+   function changeScreenSize(w,h)
+     {
+       window.resizeTo( w,h )
+     }
+	</script>
+  <body onload="changeScreenSize(1200,600)">
+    <div id='tooltip_container'></div>
+		<div id="page_container" style='min-height: 300px'>
+			<div id="page">
+				<div id='actions'>
+  				<ul>
+						<% @folders.each do |folder| %>
+							<li id='folder_<%= folder.id %>'>
+								<%= link_to_function folder.title, "showAssets('#{folder.id}');", :class => 'img_icon' %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+				<div class='item records' id='assets'>
+					<ul id='assets'>
+						<% @folders.each do |folder| %>
+							<% folder.assets.each do |asset| %>
+								<li class='clearfix record on folder_<%= asset.folder_id %>' onclick="selectAsset('<%= asset.data.url %>');" style="<%= 'display: none;' if asset.folder_id != @folders.first.id %>">
+									<span class='title'>
+										<%= asset.data_file_name %> <span class="preview">&nbsp;</span>
+									</span>
+								</li>
+							<% end %>
+						<% end %>
+					</ul>
+					<script type="text/javascript" charset="utf-8">
+						function showAssets(id){
+							id = 'folder_'+id;
+							$('ul#assets li').each(function(){
+								$(this).hide();
+							});
+							$('ul#assets li.'+id).each(function(){
+								$(this).show();
+							})
+						}
+						function getUrlParam(paramName){
+							var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+							var match   = window.location.search.match(reParam);
+							return (match && match.length > 1) ? match[1] : '' ;
+						}
+						function selectAsset(fileUrl){
+							fileUrl     = fileUrl;
+							var funcNum = getUrlParam('CKEditorFuncNum');
+							window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+							window.close();
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>
