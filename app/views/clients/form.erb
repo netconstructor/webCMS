@@ -1,9 +1,10 @@
 <%= form_for  @client, :html => {:multipart => true} do |f| %>
 	<%= item f, :text_field, 	:name 		%>
 	<%= item f, :text_field, 	:domain 	%>
+	<%= item f, :text_field,	:code 		%>
 	<%= item f, :check_box,		:active 	%>
 	<%= item f, :file_field,	:zip 			%>
-	
+
 	<%= f.fields_for :parts do |part| %>
 		<%= render 'part_fields',:f => part%>
 	<% end %>

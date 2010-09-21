@@ -12,6 +12,7 @@
 		<%= javascript_include_tag 	'/public/index' 		%>
 
 		<%= yield :head %>
+		<%= render :partial => '/shared/analytics', :locals => {:code => Client.find(session[:client_id]).code }%>
 	</head>
   <body>
 		<%= yield -%>
