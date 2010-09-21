@@ -35,6 +35,7 @@ CKEDITOR.editorConfig = function( config )
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
         ['Link','Unlink'],
 				['Table','HorizontalRule','SpecialChar'],
-				['Image']
+				['Image'],
+				['Source'],
     ];
 };
