@@ -8,5 +8,5 @@ class Asset < ActiveRecord::Base
     :url =>                    '/assets/files/:id/:style.:extension'
 
   validates_attachment_presence     :data unless :data
-  validates_attachment_size         :data, :less_than => 10.megabytes unless :data
+  validates_attachment_size         :data, :less_than => 50.megabytes unless :data
 end
