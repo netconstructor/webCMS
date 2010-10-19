@@ -10,9 +10,9 @@
 <div class='slideshow' id='gallery_<%= item.id %>'>
 	<ul class='slideshow'>
 		<% item.images.each do |image| %>
-			<li id='image_<%= image.id %>'>
-				<%= image_tag image.data.url(:slideshow), :border=>0, :title => image.data_file_name, :alt => '' %>
-			</li>
+				<li id='image_<%= image.id %>'>
+					<%= image_tag image.data.url(:slideshow), :border=>0, :title => image.name, :alt => '' %>
+				</li>
 		<% end %>
 	</ul>
 </div>

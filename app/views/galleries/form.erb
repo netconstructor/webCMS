@@ -1,4 +1,11 @@
 <%= form_for  @gallery do |f| %>
 	<%= item f, :text_field, 	:title 				%>
+	<% if @gallery.images.count != 0 %>
+		<h1>Foto's</h1>
+		<%= f.fields_for :images do |image| %>
+			<%= image_tag image.object.data.url(:small), :width => 50  %>
+			<%= item image, :text_field, :name %>
+		<% end %>
+	<% end %>
 	<%= buttons f, :galleries, ['update', 'updateEdit', 'cancel'] %>
 <% end %>
