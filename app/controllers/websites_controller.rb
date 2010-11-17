@@ -8,7 +8,7 @@ class WebsitesController < ApplicationController
       if @user.group.admin == true
         @pages = Page.find(:all, :conditions => {:client_id => session[:client_id], :parent_id => nil})
       else
-        @pages = Page.all(:include => :groups, :conditions => ["(#{Group.table_name}.id IS NULL OR #{Group.table_name}.id IS #{@user.group_id}) AND #{Page.table_name}.client_id='#{session[:client_id]}' AND #{Page.table_name}.parent_id IS NULL"])
+        @pages = Page.all(:include => :groups, :conditions => ["(#{Group.table_name}.id IS NULL OR #{Group.table_name}.id='#{@user.group_id}') AND #{Page.table_name}.client_id='#{session[:client_id]}' AND #{Page.table_name}.parent_id IS NULL"])
       end
     else
       @pages = Page.all(:include => :groups, :conditions => ["#{Group.table_name}.id IS NULL AND #{Page.table_name}.client_id='#{session[:client_id]}' AND #{Page.table_name}.parent_id IS NULL"])
