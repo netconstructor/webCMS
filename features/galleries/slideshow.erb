@@ -11,7 +11,7 @@
 	<ul class='slideshow'>
 		<% item.images.each do |image| %>
 				<li id='image_<%= image.id %>'>
-					<%= image_tag image.data.url(:slideshow), :border=>0, :title => image.name, :alt => '' %>
+					<%= image_tag image.data.url(:large), :border=>0, :title => image.name, :alt => '' %>
 				</li>
 		<% end %>
 	</ul>

@@ -1,9 +1,9 @@
 /*---------- slideshow ---------*/
 ul.slideshow {
 	list-style:none;
-	width:500px;
-	height:250px;
-	overflow:hidden;
+	width:100%;
+  height: 350px;	
+  overflow:hidden;
 	position:relative;
 	margin:0;
 	padding:0;
@@ -23,7 +23,7 @@ ul img {
 
 
 #slideshow-caption {
-	width:500px;
+	width:100%;
 	height:70px;
 	position:absolute;
 	bottom:0;
